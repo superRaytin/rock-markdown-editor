@@ -1,0 +1,16 @@
+{
+  "name": "Rock! Markdown Editor",
+  "version": "0.1",
+  "main": "markdown.html",
+  "window": {
+    "icon": "img/ico.png",
+    "show": false,
+    "position": "center",
+    "toolbar": true,
+    "frame": true,
+    "min_width": 850,
+    "min_height": 600,
+    "width": 1200,
+    "height": 700
+  }
+}

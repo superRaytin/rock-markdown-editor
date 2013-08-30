@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rock! MarkDown Editor</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/chromium.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-glyphicons.css">
+    <link rel="stylesheet" type="text/css" href="codemirror/lib/codemirror.css">
+    <link rel="stylesheet" type="text/css" href="codemirror/theme/lesser-dark.css">
+    <link rel="stylesheet" type="text/css" href="css/aero.css">
+    <link rel="stylesheet" type="text/css" href="css/loading.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div id="wrapper" class="wrapper typo">
+    <!-- opening animation start -->
+    <div id="opening_mask"></div>
+    <div id="opening_canvas">
+        <div id="canvas_inner">
+            <div class="loading-1 open_circle">
+                <ul class="bokeh">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="canvas_content clearfix">
+                <img src="logo.png">
+                <div class="open_name">Rock! Markdown</div>
+            </div>
+        </div>
+    </div>
+    <!-- opening animation end -->
+    <!-- loading start -->
+    <div id="loadingGo" class="hide">
+        <div class="loading">
+            <div class="loading-2 loadX">
+                <div><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="loading-des">正在加载 ...</div>
+        </div>
+        <div class="loading-mask"></div>
+    </div>
+    <!-- loading end -->
+
+    <div class="menu">
+        <span class="smallLogo"><img src="logo.png"></span>
+        <span class="item" rel="file"><i class="icon-file icon-white"></i>文件(F)</span>
+        <span class="item" rel="edit"><i class="icon-edit icon-white"></i>编辑(E)</span>
+        <span class="item" rel="insert"><i class="icon-share icon-white"></i>插入(I)</span>
+        <span class="item" rel="view"><i class="icon-camera icon-white"></i>查看(V)</span>
+        <span class="item" rel="tool"><i class="icon-wrench icon-white"></i>工具(T)</span>
+        <!--<span class="item" rel="history"><i class="icon-bookmark icon-white"></i>历史(S)</span>-->
+        <span class="item" rel="help"><i class="icon-question-sign icon-white"></i>帮助(H)</span>
+    </div>
+    <div class="toolbar" id="J-toolbar">
+        <div class="clearfix">
+            <div class="toolblock clearfix">
+                <span id="J-tool-new" class="item" method="new" title="新建文档 (Ctrl+N)"><i class="icon-plus icon-white"></i></span>
+                <span id="J-tool-save" class="item" method="save" title="保存文档 (Ctrl+S)"><i class="icon-book icon-white"></i></span>
+                <span id="J-tool-select" class="item" method="select" title="打开文件 (Ctrl+O)"><i class="icon-folder-open icon-white"></i></span>
+                <span id="J-tool-run" class="item disable" method="run" title="Run 运行 (F5)"><i class="icon-play icon-white"></i></span>
+                <span id="J-tool-undo" class="item" method="undo" title="撤消 (Ctrl+Z)"><i class="icon-arrow-left icon-white"></i></span>
+                <span id="J-tool-redo" class="item" method="redo" title="重做 (Ctrl+Y)"><i class="icon-arrow-right icon-white"></i></span>
+            </div>
+            <div class="toolblock disable clearfix" id="J-insertArea">
+                <span id="J-tool-h1" class="item" method="pre" tar="#" title="标题 1 (Ctrl+1)">H1</span>
+                <span id="J-tool-h2" class="item" method="pre" tar="##" title="标题 2 (Ctrl+2)">H2</span>
+                <span id="J-tool-h3" class="item" method="pre" tar="###" title="标题 3 (Ctrl+3)">H3</span>
+                <span id="J-tool-code" class="item codetext" method="pre" tar="    " title="代码块 (Ctrl+K)">< ></span>
+                <span id="J-tool-block" class="item" method="pre" tar=">" title="引用 (Ctrl+Q)">Block</span>
+                <span id="J-tool-bold" class="item" method="wrap" tar="**" title="加粗 (Ctrl+B)"><i class="icon-bold icon-white"></i></span>
+                <span id="J-tool-italic" class="item" method="wrap" tar="*" title="倾斜 (Ctrl+I)"><i class="icon-italic icon-white"></i></span>
+                <span id="J-tool-list" class="item" method="pre" tar="-" title="无序列表 (Ctrl+U)"><i class="icon-list icon-white"></i></span>
+                <span id="J-tool-link" class="item pop" method="link" tmp="url" title="链接 (Ctrl+L)"><i class="icon-random icon-white"></i></span>
+                <span id="J-tool-image" class="item pop" method="image" tmp="image" title="图片 (Ctrl+G)"><i class="icon-picture icon-white"></i></span>
+                <span id="J-tool-hr" class="item" method="replace" tar="---" title="横线 (Ctrl+R)"><i class="icon-minus icon-white"></i></span>
+                <span id="J-tool-timestamp" class="item" method="replace" tar="timestamp" title="时间戳 (Ctrl+T)"><i class="icon-time icon-white"></i></span>
+                <span id="J-tool-delline" class="item" method="delline" title="剪切 or 清除当前行 (Ctrl+X)"><i class="icon-adjust icon-white"></i></span>
+            </div>
+            <div class="toolblock clearfix">
+                <span id="J-tool-realtime" class="item on" method="realtime" title="实时预览效果"><i class="icon-eye-open icon-white"></i></span>
+                <span id="J-tool-maxsize" class="item" method="maxsize" title="最大化编辑器 (F11)"><i class="icon-fullscreen icon-white"></i></span>
+            </div>
+        </div>
+        <input type="file" class="hide" id="J-hi-select">
+        <input type="file" class="hide" id="J-hi-savePath" nwsaveas>
+    </div>
+    <div class="tab" id="J-tab">
+        <div class="tabInner clearfix"></div>
+    </div>
+    <div class="main clearfix">
+        <div id="codeMirror" class="mainLeft"></div>
+        <div id="showdown" class="mainRight markdown-body">
+            <iframe src="proxy.html"></iframe>
+        </div>
+        <div class="footer" id="J-footer">
+            <div class="clearfix">
+                <div id="J-console" class="console fn-left">
+                    Words: <span id="console_words">0</span>
+                </div>
+                <div class="console fn-left fn-ml10">
+                    Lines: <span id="console_lines">0</span>
+                </div>
+                <div class="console fn-left fn-ml20">
+                    <span id="console_file"></span>
+                </div>
+                <div class="author fn-right">By <a href="http://jsfor.com/">柳裟</a></div>
+            </div>
+        </div>
+    </div>
+    <div id="overlay"></div>
+    <div id="J-msgBox" class="msgBox hide">
+        <div class="bar">信息填写</div>
+        <div class="content" id="J-box-content"></div>
+        <div class="bot">
+            <input type="button" class="btn btn_toolPop custom-appearance" value="取消" method="cancel">
+            <input type="button" class="btn btn-success btn_toolPop custom-appearance" value="确定" method="ok">
+        </div>
+    </div>
+    <div id="J-boxTemplate-url" class="hide">
+        <div class="line">
+            <label for="input1" class="required">URL</label>
+            <input type="text" class="input" id="input1">
+        </div>
+        <div class="line">
+            <label for="input2">链接文本</label>
+            <input type="text" class="input" id="input2">
+        </div>
+        <div class="line">
+            <label for="input2">提示信息</label>
+            <input type="text" class="input" id="input3">
+        </div>
+    </div>
+
+    <div id="J-boxTemplate-image" class="hide">
+        <div class="line">
+            <label for="input1" class="required">URL</label>
+            <input type="text" class="input" id="input1">
+        </div>
+        <div class="line">
+            <label for="input2">提示信息</label>
+            <input type="text" class="input" id="input2">
+        </div>
+    </div>
+
+</div>
+<!-- template start -->
+<script type="template/dialog" id="J-settings">
+    <div id="dialogWrap" class="dialogWrap">
+        <div class="tab_trigger clearfix">
+            <span class="tab_tigger_item on">常用</span>
+            <span class="tab_tigger_item">编辑</span>
+            <span class="tab_tigger_item">邮件</span>
+            <span class="tab_tigger_item">高级</span>
+        </div>
+        <div class="tab_content">
+            <div class="tab_content_item">
+                <div class="tab_content_column">
+                    <fieldset>
+                        <legend>标签栏</legend>
+                        <div class="fieldset_content">
+                            <div class="tab_content_column">
+                                <input id="dblclickClose" type="checkbox" class="column_checkbox" data-name="tag_dblclickClose">
+                                <label for="dblclickClose" class="column_label_check">双击关闭标签</label>
+                            </div>
+                            <div class="tab_content_column">
+                                <input id="lockTag" type="checkbox" class="column_checkbox" data-name="tag_lock">
+                                <label for="lockTag" class="column_label_check">锁定(不允许拖放)</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="tab_content_column">
+                    <fieldset>
+                        <legend>保存扩展名</legend>
+                        <div class="fieldset_content">
+                            <input type="radio" name="extension" id="extension_md" class="column_radio" data-name="extension" value="md" checked>
+                            <label for="extension_md" class="column_label_radio">.md</label>
+                            <input type="radio" name="extension" id="extension_markdown" class="column_radio" data-name="extension" value="markdown">
+                            <label for="extension_markdown" class="column_label_radio">.markdown</label>
+                            <input type="radio" name="extension" id="extension_txt" class="column_radio" data-name="extension" value="txt">
+                            <label for="extension_txt" class="column_label_radio">.txt</label>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="tab_content_item hide">
+                <div class="tab_content_column">
+                    <input id="fileManager" type="checkbox" class="column_checkbox" data-name="fileManager">
+                    <label for="fileManager" class="column_label_check">文件管理器</label>
+                </div>
+            </div>
+            <div class="tab_content_item hide">
+                <div class="tab_content_column">
+                    <fieldset>
+                        <legend>服务器信息 / 登录信息</legend>
+                        <div class="fieldset_content group_mail">
+                            <div class="fieldset_column">
+                                <label for="smtp_hostName" class="column_title_input">SMTP</label>
+                                <input id="smtp_hostName" type="text" class="column_input" data-name="SMTP" data-belong="mail">
+                                <span class="after_tips">例：smtp.163.com</span>
+                            </div>
+                            <div class="fieldset_column">
+                                <label for="smtp_port" class="column_title_input">端口</label>
+                                <input id="smtp_port" type="text" class="column_input" value="465" data-name="port" data-belong="mail">
+                                <span class="after_tips">通常是465</span>
+                            </div>
+                            <div class="fieldset_column">
+                                <label for="smtp_userName" class="column_title_input">用户名</label>
+                                <input id="smtp_userName" type="text" class="column_input" data-name="userName" data-belong="mail">
+                                <span class="after_tips">例：test@163.com</span>
+                            </div>
+                            <div class="fieldset_column">
+                                <label for="smtp_pass" class="column_title_input">密码</label>
+                                <input id="smtp_pass" type="password" class="column_input" data-name="password" data-belong="mail">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="tab_content_column">
+                    <input id="useSSL" type="checkbox" class="column_checkbox" data-name="SSL" data-belong="mail">
+                    <label for="useSSL" class="column_label_check">使用SSL</label>
+                    <input id="mail_flag" type="checkbox" class="column_checkbox fn-ml10" data-name="flag" data-belong="mail">
+                    <label for="mail_flag" class="column_label_check">保留邮件底部Rock!标识（强烈建议保留）</label>
+                </div>
+                <div class="tab_content_column">
+                    <input type="button" id="J-sendTestMail" class="column_button" value="测试账户设置">
+                    <span class="after_tips">将发送一封测试邮件</span>
+                </div>
+            </div>
+            <div class="tab_content_item hide">
+                <div class="tab_content_column">
+                    <fieldset>
+                        <legend>文件打开 / 保存路径</legend>
+                        <div class="fieldset_content">
+                            <div class="fieldset_column">
+                                <input type="radio" name="filePath" id="filePath_current" class="column_radio" data-name="mode" data-belong="savePath" value="current" checked>
+                                <label for="filePath_current" class="column_label_radio">与当前文件一致</label>
+                            </div>
+                            <div class="fieldset_column">
+                                <input type="radio" name="filePath" id="filePath_last" class="column_radio" data-name="mode" data-belong="savePath" value="last">
+                                <label for="filePath_last" class="column_label_radio">记住最后的操作路径</label>
+                            </div>
+                            <div class="fieldset_column">
+                                <input type="radio" name="filePath" id="filePath_custom" class="column_radio" data-name="mode" data-belong="savePath" data-noclick="yes" value="custom">
+                                <label for="filePath_custom" class="column_label_radio">
+                                    <input type="text" class="column_input J-filePath_custom">
+                                    <input type="file" class="hide" nwdirectory>
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="tab_content_column">
+                    <fieldset>
+                        <legend>主 题</legend>
+                        <div class="fieldset_content">
+                            <label for="theme_code" class="column_label_select">编码区</label>
+                            <select id="theme_code" class="column_select" data-name="theme_code">
+                                <option value="default">default</option>
+                            </select>
+                            <label for="theme_preview" class="column_label_select fn-ml20">预览区</label>
+                            <select id="theme_preview" class="column_select" data-name="theme_preview">
+                                <option value="default">default</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>升 级</legend>
+                        <div class="fieldset_content">
+                            <input type="radio" name="update" id="update_tip" class="column_radio" data-name="update" value="tip" checked>
+                            <label for="update_tip" class="column_label_radio">有更新提示我升级</label>
+                            <input type="radio" name="update" id="update_auto" class="column_radio" data-name="update" value="auto">
+                            <label for="update_auto" class="column_label_radio">自动更新</label>
+                            <input type="radio" name="update" id="update_never" class="column_radio" data-name="update" value="never">
+                            <label for="update_never" class="column_label_radio">从不自动更新</label>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="template/dialog" id="J-sendMail">
+    <div id="sendMailWrapper" class="sendMailWrapper">
+        <div class="dia_content_column">
+            <label for="mail_reciveUsers" class="required column_title_input">收件人</label>
+            <input id="mail_reciveUsers" type="text" class="column_input" placeholder="多个收件人用','逗号隔开">
+            <span id="J-getBook" class="glyphicon glyphicon-user f18" title="历史联系人列表"></span>
+        </div>
+        <div class="dia_content_column">
+            <label for="mail_subject" class="required column_title_input">主题</label>
+            <input id="mail_subject" type="text" class="column_input" placeholder="邮件主题">
+        </div>
+        <div class="dia_content_column" style="text-align:right">
+            <input type="button" id="J-mail-otherOpts" class="column_button" value="查看更多项">
+        </div>
+        <div class="mail_otherOptions hide">
+            <div class="dia_content_column">
+                <label for="mail_sendCC" class="column_title_input">抄送</label>
+                <input id="mail_sendCC" type="text" class="column_input" placeholder="抄送给多个收件人用','逗号隔开">
+            </div>
+            <div class="dia_content_column">
+                <label for="mail_sign" class="column_title_input">签名</label>
+                <textarea id="mail_sign" class="form-control column_textarea" placeholder="显示在邮件正文下方, 支持markdown写法"></textarea>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="template/dialog" id="J-receiveBooks">
+    <div id="bookWrapper" class="bookWrapper">
+        <input type="button" id="J-book-clean" class="column_button" value="清除">
+    </div>
+</script>
+<script type="template/dialog" id="J-newVersion">
+    <div id="newVersionWrapper" class="newVersionWrapper">
+        <div class="dia_line">检查到一个新版本【<span class="new_version"></span>】...是否立即下载？</div>
+    </div>
+</script>
+<script type="template/dialog" id="J-checkUpdate">
+    <div id="checkUpdateWrapper" class="checkUpdateWrapper">
+        <div class="dia_line">连接服务器...</div>
+    </div>
+</script>
+<script type="template/dialog" id="J-about-rock">
+    <div class="aboutWrapper clearfix">
+        <div class="about_pic">
+            <img src="logo.png">
+        </div>
+        <div class="dia_content_column">
+            版本：0.1.0
+        </div>
+        <div class="dia_content_column">
+            Rock! Markdown编辑器基于 Node-webkit 开源项目，支持开源社区发展。
+        </div>
+        <div class="dia_content_column" style="text-align:right">
+            <input type="button" id="J-about-update" class="column_button" value="检查更新">
+        </div>
+    </div>
+</script>
+<script type="template/dialog" id="J-about-author">
+    <div class="aboutWrapper">
+        <div class="dia_content_column">
+            本软件由 <a href="http://www.jsfor.com/">柳裟</a> 编写
+            <br>欲了解更多，欢迎前往我的基地 <a href="http://www.jsfor.com/">jsfor.com</a>
+            <br>联系我：superRaytin#163.com(# → @)
+        </div>
+    </div>
+</script>
+<!-- template end -->
+<script type="text/javascript">
+    require('nw.gui').Window.get().show();
+</script>
+<script type="text/javascript" src="js/src/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="js/src/jquery.artDialog.min.js"></script>
+<script type="text/javascript" src="js/src/artDialog.plugins.min.js"></script>
+<script type="text/javascript" src="js/src/bootstrap.min.js"></script>
+<!-- codeMirror -->
+<script type="text/javascript" src="codemirror/lib/codemirror.js"></script>
+<script type="text/javascript" src="codemirror/mode/markdown/markdown.js"></script>
+<!-- codeMirror end -->
+<!-- showdown -->
+<script type="text/javascript" src="js/src/showdown.js"></script>
+<script type="text/javascript" src="js/src/extensions/github.js"></script>
+<!-- showdown end -->
+<script type="text/javascript" src="js/src/kibo.js"></script>
+<script type="text/javascript" src="js/scripts.js"></script>
+</body>
+</html>
+
