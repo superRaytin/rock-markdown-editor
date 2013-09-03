@@ -1,6 +1,6 @@
 {
   "name": "Rock! Markdown Editor",
-  "version": "0.1",
+  "version": "0.1.2",
   "main": "markdown.html",
   "window": {
     "icon": "img/ico.png",
