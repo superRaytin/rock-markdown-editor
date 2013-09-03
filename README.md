@@ -30,3 +30,8 @@
 使用中有任何问题与建议，欢迎反馈给我，以下方式可以联系到我
 
 * superRaytin#163.com, 把#换成@
+
+# License
+本项目基于MIT协议发布
+
+MIT: [http://rem.mit-license.org](http://rem.mit-license.org/) 详见 [LICENSE](/LICENSE) 文件
