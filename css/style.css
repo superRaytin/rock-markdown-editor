@@ -601,6 +601,13 @@ label.required:before{
     to{background:#666}
 }
 
+.loadY{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 270px;
+    top: 30px;
+}
 #opening_mask, #opening_canvas{
     position: absolute;
     left: 0;
@@ -611,7 +618,7 @@ label.required:before{
     background: #333;
 }
 #opening_canvas{
-    -webkit-animation: background1 2s infinite alternate;
+    -webkit-animation: background1 1.5s infinite alternate;
 }
 #canvas_inner{
     position: absolute;
@@ -622,6 +629,9 @@ label.required:before{
 }
 .canvas_content{
     margin-top: 0px;
+}
+.canvas_content img{
+    margin-left: 150px;
 }
 .open_circle{
     left: 100px;

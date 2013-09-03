@@ -107,7 +107,7 @@ var contextMenuInit = function(){
         }
     }));
     fileMenu.append(menuMachine('file-saveAsDoc', {
-        label: '另存为...',
+        label: '另存为... (Ctrl+Shift+S)',
         click: function(){
             markdown.file.saveAs();
         }
@@ -188,14 +188,12 @@ var contextMenuInit = function(){
     editMenu.append(source.separator);
     editMenu.append(menuMachine('copy', {
         label: '复制 (Ctrl+C)',
-        icon: './img/tick.png',
         click: function(){
             clipboard.set(editor.getSelection());
         }
     }));
     editMenu.append(menuMachine('cut', {
         label: '剪切 (Ctrl+X)',
-        icon: './img/cut.png',
         click: function(){
             clipboard.set(editor.getSelection());
             editor.replaceSelection('');
@@ -203,7 +201,6 @@ var contextMenuInit = function(){
     }));
     editMenu.append(menuMachine('stick', {
         label: '粘贴 (Ctrl+V)',
-        icon: './img/edit.png',
         click: function(){
             editor.replaceSelection(clipboard.get());
         }
@@ -399,7 +396,7 @@ var contextMenuInit = function(){
         }
     }));
     toolMenu.append(menuMachine('tool-sendEmailAsHtml', {
-        label: '将当前HTML以邮件发送',
+        label: '发送邮件 (以当前HTML为内容)',
         click: function(){
             markdown.mail.showDialog();
         }
@@ -505,7 +502,7 @@ var contextMenuInit = function(){
     }));
     helpMenu.append(source.separator);
     helpMenu.append(menuMachine('help-update', {
-        label: '检查更新',
+        label: '检查新版本',
         click: function(){
             markdown.update.init();
         }

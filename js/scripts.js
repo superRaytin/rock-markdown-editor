@@ -12,9 +12,6 @@ var fs = require('fs'),
 global.$ = $;
 
 $(function(){
-    // 临时缓存
-    var tempCache = {};
-
     var cache = {
         editor: null,
         //menuSource: {}, 菜单源
@@ -33,8 +30,6 @@ $(function(){
     var codeEditor = {
         // 初始化编辑器
         codeMirrorInit: function(type){
-            var that = this;
-
             cache.editor = CodeMirror(document.getElementById('codeMirror'),
                 {
                     mode: type,
@@ -210,7 +205,7 @@ $(function(){
         Showdown: Showdown,
         //reg
         reg: {
-            markdownFile: /^txt|md|markdown$/,
+            markdownFile: /^(txt|md|markdown)$/,
             script: /<script([^>])*>(.*<\/script>)*/g
         },
         // 记录用户足迹
@@ -584,9 +579,7 @@ $(function(){
             if(!file) return;
 
             if( this.reg.markdownFile.test(file.name.substr(file.name.lastIndexOf('.') + 1)) ){
-                markdown.loadFile(file.path, function(data){
-                    markdown.cache.editor.setValue(data);
-                });
+                markdown.tab.add(file.path);
             }else{
                 console.log(file.path + ' 文件不符合格式');
                 this.dialog('请选择正确的文件格式 .md|.markdown|.txt', 'button');
@@ -620,8 +613,12 @@ $(function(){
             kibo.down('ctrl n', function(){
                 $('#J-tool-new').trigger('click');
             });
-            kibo.down('ctrl s', function(){
-                $('#J-tool-save').trigger('click');
+            kibo.down('ctrl s', function(e){
+                if(e.shiftKey){
+                    markdown.file.saveAs();
+                }else{
+                    $('#J-tool-save').trigger('click');
+                };
             });
             kibo.down('ctrl o', function(){
                 $('#J-tool-select').trigger('click');
@@ -1043,7 +1040,7 @@ $(function(){
         update: {
             init: function(){
                 $.artDialog({
-                    title: '检查更新',
+                    title: '检查新版本',
                     lock: true,
                     resize: false,
                     width: 300,
@@ -1111,7 +1108,7 @@ $(function(){
                         console.log('已经是最新。。。');
                     }
                     else{
-                        that.lineMsg('找到一个新版本： V' + latestVersion + ' <a href="'+ latestUrl +'" nopen="no">点击下载</a>', noLine);
+                        that.lineMsg('找到一个新版本： V' + latestVersion + ' <a href="'+ latestUrl +'">点击下载</a>', noLine);
                         if(noLine && noLine.callback){
                             noLine.callback(latestVersion, latestUrl);
                         }
@@ -1393,10 +1390,10 @@ $(function(){
             var guiWin = this.cache.guiWin || (this.cache.guiWin = gui.Window.get());
 
             // 设置窗口宽高
-            //var disX = 100, disY = 50;
-            //guiWin.resizeTo(window.screen.availWidth - disX * 2, window.screen.availHeight - disY * 2);
-            //guiWin.x = disX;
-            //guiWin.y = disY;
+            var disX = 100, disY = 50;
+            guiWin.resizeTo(window.screen.availWidth - disX * 2, window.screen.availHeight - disY * 2);
+            guiWin.x = disX;
+            guiWin.y = disY;
 
             //guiWin.resizeTo(1000, 700);
             //guiWin.x = 0;
@@ -1406,7 +1403,7 @@ $(function(){
             this.observer();
 
             // 初始默认载入readme
-            !cache.doNotLoadIntro && markdown.tab.add('./README.md', true);
+            !cache.doNotLoadIntro && markdown.tab.add('./docs/INTRODUCTION.md', true);
 
             console.log('init ending..');
             setTimeout(function(){
@@ -1419,7 +1416,7 @@ $(function(){
                     checked = true;
                     markdown.checkVersion();
                 });
-            }, 5000);
+            }, 1500);
         }
     };
     markdown.init();

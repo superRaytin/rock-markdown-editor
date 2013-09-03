@@ -6,7 +6,7 @@
     "icon": "img/ico.png",
     "show": false,
     "position": "center",
-    "toolbar": true,
+    "toolbar": false,
     "frame": true,
     "min_width": 850,
     "min_height": 600,

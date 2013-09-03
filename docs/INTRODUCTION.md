@@ -1,6 +1,6 @@
 ![Rock MarkDown Editor](logo.png)
 #Rock! MarkDown是什么
-基于 [Node-webkit](https://github.com/rogerwang/node-webkit) 实现的markdown文档编辑器
+markdown文档编辑器
 
 ##Rock! MarkDown有哪些功能
 
