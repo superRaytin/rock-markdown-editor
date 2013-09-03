@@ -2,6 +2,8 @@
 #Rock! MarkDown是什么
 基于 [Node-webkit](https://github.com/rogerwang/node-webkit) 实现的markdown文档编辑器
 
+![Rock MarkDown Editor](/docs/z.png)
+
 ##Rock! MarkDown有哪些功能
 
 * 编辑和预览，`所见即所得`，Ctrl+F12快速浏览器预览
