@@ -26,6 +26,8 @@
 
 * Windows 32bit: [云盘下载](http://yunpan.cn/QXi3BSFrNCWGN)(推荐) [备用下载](http://www.jsfor.com/project/rock/Rock!_Markdown_Editor_v0.1.2_win32bit.zip)
 
+PS：以上32位版本，在64位系统上测试通过是可以使用的，不过不排除某些情况下失效，原因未知。
+
 ##感谢以下项目
 
 * [Node-webkit](https://github.com/rogerwang/node-webkit)
