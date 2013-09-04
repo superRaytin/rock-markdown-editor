@@ -457,37 +457,7 @@ var contextMenuInit = function(){
     helpMenu.append(menuMachine('help-feedback', {
         label: '问题反馈',
         click: function(){
-            return markdown.dialog('啊嘞...内测版不支持此功能 (╯_╰)', 'button');
-            $.artDialog({
-                title: '问题反馈',
-                lock: true,
-                resize: false,
-                button: [
-                    {
-                        value: '确 定',
-                        callback: function() {
-                            //return that.send();
-                        },
-                        focus: true
-                    },
-                    {
-                        value: '取 消',
-                        callback: function() {
-                        }
-                    }
-                ],
-                initialize: function(){
-                    markdown.dialog_commonInit();
-
-                    var dialogParent = $('.d-outer').parent();
-
-                    this.content($('#J-feedback').html());
-                    dialogParent.hide();
-                    //$('#sendMailWrapper').parent().css('padding', 0);
-
-                    dialogParent.fadeIn(300);
-                }
-            });
+            gui.Shell.openExternal('https://github.com/superRaytin/Rock_Markdown');
         }
     }));
     helpMenu.append(new gui.MenuItem({
@@ -497,7 +467,7 @@ var contextMenuInit = function(){
     helpMenu.append(menuMachine('help-site', {
         label: 'Rock MarkDown 网站',
         click: function(){
-            markdown.dialog('啊嘞...介个还在建设中 (╯_╰)', 'button');
+            gui.Shell.openExternal('https://github.com/superRaytin/Rock_Markdown');
         }
     }));
     helpMenu.append(source.separator);
@@ -510,7 +480,7 @@ var contextMenuInit = function(){
     helpMenu.append(menuMachine('help-changelog', {
         label: '版本日志',
         click: function(){
-            markdown.tab.add('./CHANGELOG.md', true);
+            markdown.tab.add('./docs/CHANGELOG.md', true);
         }
     }));
     helpMenu.append(source.separator);
@@ -527,6 +497,7 @@ var contextMenuInit = function(){
                     var dialogParent = $('.d-outer').parent();
 
                     this.content($('#J-about-rock').html());
+                    $('#J-about-version').text(markdown.settings.version);
                     dialogParent.hide();
 
                     dialogParent.fadeIn(300);

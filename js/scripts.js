@@ -1390,10 +1390,10 @@ $(function(){
             var guiWin = this.cache.guiWin || (this.cache.guiWin = gui.Window.get());
 
             // 设置窗口宽高
-            var disX = 100, disY = 50;
-            guiWin.resizeTo(window.screen.availWidth - disX * 2, window.screen.availHeight - disY * 2);
-            guiWin.x = disX;
-            guiWin.y = disY;
+            //var disX = 100, disY = 50;
+            //guiWin.resizeTo(window.screen.availWidth - disX * 2, window.screen.availHeight - disY * 2);
+            //guiWin.x = disX;
+            //guiWin.y = disY;
 
             //guiWin.resizeTo(1000, 700);
             //guiWin.x = 0;
