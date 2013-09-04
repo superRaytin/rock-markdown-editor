@@ -1,6 +1,6 @@
 ![Rock MarkDown Editor](logo.png)
 #Rock! MarkDown是什么
-markdown文档编辑器
+快速的markdown文档编辑器
 
 ##Rock! MarkDown有哪些功能
 
