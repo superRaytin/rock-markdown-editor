@@ -21,6 +21,11 @@
 
 更多功能开发中 ......
 
+## 下载
+最新版本：Beta V0.1.2
+
+* Windows 32bit: [云盘下载](http://yunpan.cn/QXi3BSFrNCWGN)(推荐) [备用下载](http://www.jsfor.com/project/rock/Rock!_Markdown_Editor_v0.1.2_win32bit.zip)
+
 ##感谢以下项目
 
 * [Node-webkit](https://github.com/rogerwang/node-webkit)

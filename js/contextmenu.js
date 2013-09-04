@@ -457,7 +457,7 @@ var contextMenuInit = function(){
     helpMenu.append(menuMachine('help-feedback', {
         label: '问题反馈',
         click: function(){
-            gui.Shell.openExternal('https://github.com/superRaytin/Rock_Markdown');
+            gui.Shell.openExternal('https://github.com/superRaytin/Rock_Markdown/issues');
         }
     }));
     helpMenu.append(new gui.MenuItem({
