@@ -64,6 +64,18 @@ var contextMenuInit = function(){
         }
     }
 
+    // 自动折行 menu
+    var linewrappingMenu = new gui.Menu();
+    linewrappingMenu.append(menuMachine('linewrapping', {
+        label: '自动折行', //提示通过‘查看’可再次打开
+        type: 'checkbox',
+        checked: false,
+        click: function(){
+            editor.options.lineWrapping = !editor.options.lineWrapping;
+            editor.refresh();
+        }
+    }));
+
     // 工具栏 menu
     var toolbarMenu = new gui.Menu();
     toolbarMenu.append(menuMachine('toolbar', {
@@ -377,6 +389,7 @@ var contextMenuInit = function(){
         submenu: encodeSubMenu
     }));
     viewMenu.append(source.separator);
+    viewMenu.append(source.linewrapping);
     viewMenu.append(source.toolbar);
     viewMenu.append(source.console);
 
@@ -543,6 +556,7 @@ var contextMenuInit = function(){
 
     var menu = {};
     menu.codeMenu = codeMenu;
+    menu.linewrappingMenu = linewrappingMenu;
     menu.toolbarMenu = toolbarMenu;
     menu.consoleMenu = consoleMenu;
 
