@@ -11,6 +11,7 @@ module.exports = {
         "realtime": true, // 实时预览
         "maxsize": false, // 最大化
 
+        "linewrapping": false, // 自动折行
         "toolbar": true, // 工具栏
         "console": true, // 状态栏
 
