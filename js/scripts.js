@@ -869,7 +869,7 @@ $(function(){
                             curMem.modify = false;
                             curMem.data = content;
                             $('#' + key).find('.modifyflag').addClass('hide');
-                            markdown.file.writeToFile(curMem.path, content);
+                            markdown.writeToFile(curMem.path, content);
                         }else{
                             tabCache.delTabId = key;
                             cache.tabCache.saveType = 'closeApp';
