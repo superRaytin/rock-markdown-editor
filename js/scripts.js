@@ -434,6 +434,7 @@ $(function(){
                                 }
                                 break;
                             case 'password':
+                            case 'showName':
                                 setting[belong][name] = value;
                                 break;
                         }
@@ -622,6 +623,9 @@ $(function(){
             });
             kibo.down('ctrl o', function(){
                 $('#J-tool-select').trigger('click');
+            });
+            kibo.down('f10', function(){
+                $('#J-tool-reload').trigger('click');
             });
             kibo.down('ctrl f12', function(){
                 markdown.file.preview();
@@ -1161,6 +1165,23 @@ $(function(){
                 });
             }
         },
+        inaugurate: function(){
+            // 初始默认载入readme
+            !cache.doNotLoadIntro && markdown.tab.add('./docs/INTRODUCTION.md', true);
+
+            setTimeout(function(){
+                var can = $('#opening_mask, #opening_canvas'),checked = false;
+
+                can.fadeOut(600, function(){
+                    if(checked) return;
+                    can.remove();
+
+                    // 自动检查更新
+                    checked = true;
+                    markdown.checkVersion();
+                });
+            }, 1000);
+        },
         // 监听
         observer: function(){
             markdown.mail = require('./js/mail');
@@ -1380,8 +1401,6 @@ $(function(){
                     this.close(true);
                 };
             });
-
-
         },
         init: function(){
             global.markdown = markdown;
@@ -1390,33 +1409,22 @@ $(function(){
             var guiWin = this.cache.guiWin || (this.cache.guiWin = gui.Window.get());
 
             // 设置窗口宽高
-            //var disX = 100, disY = 50;
-            //guiWin.resizeTo(window.screen.availWidth - disX * 2, window.screen.availHeight - disY * 2);
-            //guiWin.x = disX;
-            //guiWin.y = disY;
+            /*
+            var disX = 100, disY = 50;
+            guiWin.resizeTo(window.screen.availWidth - disX * 2, window.screen.availHeight - disY * 2);
+            guiWin.x = disX;
+            guiWin.y = disY;
 
-            //guiWin.resizeTo(1000, 700);
-            //guiWin.x = 0;
-            //guiWin.y = 0;
-            //guiWin.show();
+            guiWin.resizeTo(1000, 700);
+            guiWin.x = 0;
+            guiWin.y = 0;
+            guiWin.show();
+             */
 
             this.observer();
 
-            // 初始默认载入readme
-            !cache.doNotLoadIntro && markdown.tab.add('./docs/INTRODUCTION.md', true);
-
             console.log('init ending..');
-            setTimeout(function(){
-                var can = $('#opening_mask, #opening_canvas'), checked = false;
-                 can.fadeOut(600, function(){
-                    if(checked) return;
-                    can.remove();
-
-                    // 自动检查更新
-                    checked = true;
-                    markdown.checkVersion();
-                });
-            }, 1500);
+            this.inaugurate();
         }
     };
     markdown.init();

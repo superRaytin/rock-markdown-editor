@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="codemirror/lib/codemirror.css">
     <link rel="stylesheet" type="text/css" href="codemirror/theme/lesser-dark.css">
     <link rel="stylesheet" type="text/css" href="css/aero.css">
+    <link rel="stylesheet" type="text/css" href="css/alertify/alertify.core.css">
+    <link rel="stylesheet" type="text/css" href="css/alertify/alertify.default.css">
     <link rel="stylesheet" type="text/css" href="css/loading.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -18,13 +20,6 @@
     <div id="opening_mask"></div>
     <div id="opening_canvas">
         <div id="canvas_inner">
-            <div class="canvas_content clearfix">
-                <img src="logo.png">
-                <div class="loading-2 loadY">
-                    <div><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-                </div>
-                <div class="open_name">Rock! Markdown</div>
-            </div>
         </div>
     </div>
     <!-- opening animation end -->
@@ -56,6 +51,7 @@
                 <span id="J-tool-new" class="item" method="new" title="新建文档 (Ctrl+N)"><i class="icon-plus icon-white"></i></span>
                 <span id="J-tool-save" class="item" method="save" title="保存文档 (Ctrl+S)"><i class="icon-book icon-white"></i></span>
                 <span id="J-tool-select" class="item" method="select" title="打开文件 (Ctrl+O)"><i class="icon-folder-open icon-white"></i></span>
+                <span id="J-tool-reload" class="item" method="reload" title="重载 (F10)"><i class="icon-refresh icon-white"></i></span>
                 <span id="J-tool-run" class="item disable" method="run" title="Run 运行 (F5)"><i class="icon-play icon-white"></i></span>
                 <span id="J-tool-undo" class="item" method="undo" title="撤消 (Ctrl+Z)"><i class="icon-arrow-left icon-white"></i></span>
                 <span id="J-tool-redo" class="item" method="redo" title="重做 (Ctrl+Y)"><i class="icon-arrow-right icon-white"></i></span>
@@ -212,6 +208,11 @@
                                 <label for="smtp_pass" class="column_title_input">密码</label>
                                 <input id="smtp_pass" type="password" class="column_input" data-name="password" data-belong="mail">
                             </div>
+                            <div class="fieldset_column">
+                                <label for="smtp_showName" class="column_title_input">显示名</label>
+                                <input id="smtp_showName" type="text" class="column_input" data-name="showName" data-belong="mail" title="出现在邮件标题">
+                                <span class="after_tips">选填项</span>
+                            </div>
                         </div>
                     </fieldset>
                 </div>
@@ -284,7 +285,7 @@
         <div class="dia_content_column">
             <label for="mail_reciveUsers" class="required column_title_input">收件人</label>
             <input id="mail_reciveUsers" type="text" class="column_input" placeholder="多个收件人用','逗号隔开">
-            <span id="J-getBook" class="glyphicon glyphicon-user f18" title="历史联系人列表"></span>
+            <span class="glyphicon glyphicon-user f18 J-getBook" title="历史联系人列表" data-type="to"></span>
         </div>
         <div class="dia_content_column">
             <label for="mail_subject" class="required column_title_input">主题</label>
@@ -297,6 +298,7 @@
             <div class="dia_content_column">
                 <label for="mail_sendCC" class="column_title_input">抄送</label>
                 <input id="mail_sendCC" type="text" class="column_input" placeholder="抄送给多个收件人用','逗号隔开">
+                <span class="glyphicon glyphicon-user f18 J-getBook" title="历史联系人列表" data-type="cc"></span>
             </div>
             <div class="dia_content_column">
                 <label for="mail_sign" class="column_title_input">签名</label>
@@ -307,7 +309,7 @@
 </script>
 <script type="template/dialog" id="J-receiveBooks">
     <div id="bookWrapper" class="bookWrapper">
-        <input type="button" id="J-book-clean" class="column_button" value="清除">
+        <input type="checkbox" id="J-selectAll" title="全选"><input type="button" id="J-book-clean" class="column_button" value="清除">
     </div>
 </script>
 <script type="template/dialog" id="J-newVersion">
@@ -353,6 +355,7 @@
 <script type="text/javascript" src="js/src/jquery.artDialog.min.js"></script>
 <script type="text/javascript" src="js/src/artDialog.plugins.min.js"></script>
 <script type="text/javascript" src="js/src/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/src/alertify.min.js"></script>
 <!-- codeMirror -->
 <script type="text/javascript" src="codemirror/lib/codemirror.js"></script>
 <script type="text/javascript" src="codemirror/mode/markdown/markdown.js"></script>

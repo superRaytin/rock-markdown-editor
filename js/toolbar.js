@@ -196,10 +196,15 @@ var toolbar = {
     save: function(e, item){
         console.log('按下ctrl+S');
         markdown.file.save();
+        alertify.success('保存成功');
     },
     // 选择文件
     select: function(e, item){
         $('#J-hi-select').trigger('click');
+    },
+    // 重载文件
+    reload: function(e, item){
+        markdown.tab.reload();
     }
 };
 

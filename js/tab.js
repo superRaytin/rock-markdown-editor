@@ -8,6 +8,7 @@ var markdown = global.markdown,
     window = global.window,
     console = window.console,
     document = window.document,
+    alertify = window.alertify,
     fs = require('fs'),
     modPath = require('path'),
     cheerio = require('cheerio'),
@@ -307,6 +308,16 @@ var tab = {
             });
         };
     },
+    // 重载当前TAB文件
+    reload: function(){
+        var currentTab = this.getCurrentTab();
+        if(currentTab.type === 'file'){
+            this.getDataByPath(currentTab.path, currentTab.id, function(data){
+                codeEditor.setValue(data, true);
+                alertify.success('重载成功');
+            });
+        }
+    },
     // 获取当前标签信息
     getCurrentTab: function(){
         var tabCache = cache.tabCache,
@@ -329,7 +340,7 @@ var tab = {
     getDataByPath: function(path, tabId, callback){
         markdown.loadFile(path, function(data){
             cache.tabCache.member[tabId].data = data;
-            callback();
+            callback(data);
         });
     }
 };
