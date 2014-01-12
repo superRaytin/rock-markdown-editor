@@ -213,6 +213,9 @@ body, button, input, select, textarea{
     margin-top: 3px;
     margin-left: 6px;
 }
+.tab .item i:hover{
+    opacity: 0.7;
+}
 .tab .item em{
     font-style: normal;
 }
@@ -584,6 +587,7 @@ label.required:before{
 }
 #J-book-clean{
     font-size: 12px;
+    margin-left: 5px;
 }
 
 .about_pic{
@@ -618,14 +622,15 @@ label.required:before{
     background: #333;
 }
 #opening_canvas{
-    -webkit-animation: background1 1.5s infinite alternate;
+    /*-webkit-animation: background1 1.5s infinite alternate;*/
 }
 #canvas_inner{
     position: absolute;
     left: 30%;
     top: 30%;
     width: 460px;
-    height: 200px;
+    height: 181px;
+    background: url('../img/mask.png') no-repeat;
 }
 .canvas_content{
     margin-top: 0px;
