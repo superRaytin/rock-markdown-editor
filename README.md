@@ -22,9 +22,9 @@
 更多功能开发中 ......
 
 ## 下载
-最新版本：Beta V0.1.2
+最新版本：Beta V0.1.3 [changeLog](#ChangeLog)
 
-* Windows 32bit: [云盘下载](http://yunpan.cn/QXi3BSFrNCWGN)(推荐) [备用下载](http://www.jsfor.com/project/rock/Rock!_Markdown_Editor_v0.1.2_win32bit.zip)
+* Windows 32bit: [云盘下载](http://yunpan.cn/QzrvNvR9FwYLu)
 
 PS：以上32位版本，在64位系统上测试通过是可以使用的，不过不排除某些情况下失效，原因未知。
 
@@ -39,6 +39,13 @@ PS：以上32位版本，在64位系统上测试通过是可以使用的，不�
 使用中有任何问题与建议，欢迎反馈给我，以下方式可以联系到我
 
 * superRaytin#163.com, 把#换成@
+
+## ChangeLog
+### 0.1.3 (2014.01.12)
+- `重要` `Fix` 修复关闭软件时，提示保存未保存的文档时跳错的bug;
+- `优化` 改进邮件历史联系人使用体验；
+- `增加` 文件编辑过程中在别处被改动，可进行手动重载；
+- `优化` 优化启动速度；
 
 # License
 本项目基于MIT协议发布
