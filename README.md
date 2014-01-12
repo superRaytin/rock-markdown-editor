@@ -22,7 +22,7 @@
 更多功能开发中 ......
 
 ## 下载
-最新版本：Beta V0.1.3 [changeLog](#ChangeLog)
+最新版本：Beta V0.1.3 [changeLog](#changelog)
 
 * Windows 32bit: [云盘下载](http://yunpan.cn/QzrvNvR9FwYLu)
 
