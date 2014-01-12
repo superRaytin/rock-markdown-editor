@@ -46,6 +46,7 @@ module.exports = {
             port: 465,
             userName: '',
             password: '',
+            showName: '',
             flag: true
         }
     }

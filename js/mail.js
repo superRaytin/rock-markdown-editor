@@ -9,7 +9,10 @@ var markdown = global.markdown,
     window = global.window,
     localStorage = window.localStorage,
     Showdown = markdown.Showdown,
-    console = window.console;
+    console = window.console,
+    alertify = window.alertify;
+
+Array.prototype.remove = window.Array.prototype.remove;
 
 var init = {
     checkSetting: function(serve){
@@ -56,9 +59,11 @@ var init = {
             $(this).hide().parent().next().removeClass('hide');
         });
 
-        $('#J-getBook').click(function(){
+        $('.J-getBook').click(function(){
             var localReceivers = localStorage.mail_receivers,
                 receivers;
+
+            that.mail_target = $(this).attr('data-type');
 
             if(localReceivers){
                 receivers = JSON.parse(localReceivers);
@@ -79,19 +84,29 @@ var init = {
                         initialize: function(){
                             markdown.dialog_commonInit();
 
-                            var that = this,
+                            var dialog = this,
                                 res = [];
+
                             $.each(receivers, function(i, item){
-                                res.push('<div class="dia_content_column"><input type="checkbox" value="'+ item +'"> ' + item + '<\/div>');
+                                res.push('<div class="dia_content_column"><input type="checkbox" class="contact_item" value="'+ item +'"> ' + item + '<\/div>');
                             });
 
                             this.content($('#J-receiveBooks').html());
 
-                            $('#bookWrapper').prepend(res.join(''));
+                            var bookWrapper = $('#bookWrapper');
+                            bookWrapper.prepend(res.join(''));
 
                             $('#J-book-clean').click(function(){
-                                delete localStorage.mail_receivers;
-                                that.close();
+                                that.cleanContacts(function(){
+                                    alertify.success('清除成功');
+                                });
+
+                                dialog.close();
+                            });
+
+                            // select all
+                            $('#J-selectAll').click(function(){
+                                $('.contact_item', bookWrapper).prop('checked', this.checked);
                             });
                         }
                     });
@@ -103,8 +118,9 @@ var init = {
         });
     },
     pushToReceive: function(){
-        var mail_reciveUsers = $('#mail_reciveUsers'),
-            checked = $('#bookWrapper input:checked'), res = [];
+        var mail_reciveUsers = this.mail_target === 'to' ? $('#mail_reciveUsers') : $('#mail_sendCC'),
+            checked = $('#bookWrapper .contact_item:checked'),
+            res = [];
 
         if(checked.length){
             checked.each(function(i, item){
@@ -112,6 +128,39 @@ var init = {
             });
 
             mail_reciveUsers.val(res.join(', '));
+        }
+        else{
+            alertify.log('未选择任何联系人');
+        }
+    },
+    // 清除联系人
+    cleanContacts: function(callback){
+        var bookWrapper = $('#bookWrapper');
+        var checked = $('.contact_item:checked', bookWrapper);
+        var localReceiver = localStorage.mail_receivers;
+        var canClean = localReceiver && checked.length;
+
+        if(canClean){
+            if(!window.confirm('清除所选联系人，确定吗？')){
+                alertify.log('取消清除');
+                return;
+            }
+
+            localReceiver = JSON.parse(localReceiver);
+
+            checked.each(function(){
+                var item = $(this);
+                localReceiver.remove(item.val());
+            });
+
+            if(localReceiver.length){
+                localStorage.mail_receivers = JSON.stringify(localReceiver);
+            }
+            else{
+                delete localStorage.mail_receivers;
+            }
+
+            callback && callback();
         }
     },
     saveContacts: function(to){
@@ -217,8 +266,13 @@ var init = {
 
         var to = $.trim($('#mail_reciveUsers').val()),
             cc = $.trim($('#mail_sendCC').val()),
+            from = '<' + mailSet.userName + '>',
             subject = $.trim($('#mail_subject').val()),
             sign = $.trim($('#mail_sign').val()), signHTML;
+
+        if(mailSet.showName != ''){
+            from = mailSet.showName + ' ' + from;
+        }
 
         var frameContent = $('#showdown iframe').contents(),
             res = '<!DOCTYPE html>\n<html>\n<head>\n';
@@ -258,7 +312,7 @@ var init = {
                 password: mailSet.password
             },
             info: {
-                from: '<' + mailSet.userName + '>',
+                from: from,
                 to: to,
                 cc: cc,
                 subject: subject,
