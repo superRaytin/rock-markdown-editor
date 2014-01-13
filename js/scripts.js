@@ -794,13 +794,25 @@ $(function(){
         },
         // 创建文件 并写入操作
         writeToFile: function(path, content){
-            var encode = cache.fileEncode[path] || 'utf-8';
+            var encode = cache.fileEncode[path] || 'utf8';
             console.log('写入编码： ' + encode);
             fs.createWriteStream(path, {
                 encoding: encode,
                 flags: 'w',
                 mode: '0666'
             }).write(content);
+        },
+        // 同步写入
+        writeToFileSync: function(path, content){
+            var encode = cache.fileEncode[path] || 'utf8';
+            console.log('写入编码： ' + encode);
+            if(fs.existsSync(path)){
+                fs.writeFileSync(path, content, {
+                    encoding: encode,
+                    flags: 'w',
+                    mode: '0666'
+                });
+            }
         },
         // 保存之后 or 打开文件之后
         // 更新标签的信息及窗口标题
@@ -873,7 +885,7 @@ $(function(){
                             curMem.modify = false;
                             curMem.data = content;
                             $('#' + key).find('.modifyflag').addClass('hide');
-                            markdown.writeToFile(curMem.path, content);
+                            markdown.writeToFileSync(curMem.path, content);
                         }else{
                             tabCache.delTabId = key;
                             cache.tabCache.saveType = 'closeApp';
