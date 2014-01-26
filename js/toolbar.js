@@ -6,7 +6,10 @@
 var markdown = global.markdown,
     cache = markdown.cache,
     codeEditor = markdown.codeEditor,
-    common = markdown.common;
+    common = markdown.common,
+    window = global.window,
+    console = window.console,
+    alertify = window.alertify;
 
 var toolbar = {
     undo: function(e, item){
