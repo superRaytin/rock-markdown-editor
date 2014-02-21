@@ -632,6 +632,14 @@ label.required:before{
     height: 181px;
     background: url('../img/mask.png') no-repeat;
 }
+.canvas_rolling{
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    width: 32px;
+    height: 32px;
+    background: url('../img/rolling.gif') no-repeat;
+}
 .canvas_content{
     margin-top: 0px;
 }
