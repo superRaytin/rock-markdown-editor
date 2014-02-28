@@ -8,8 +8,7 @@ var markdown = global.markdown,
     codeEditor = markdown.codeEditor,
     common = markdown.common,
     window = global.window,
-    console = window.console,
-    alertify = window.alertify;
+    console = window.console;
 
 var toolbar = {
     undo: function(e, item){
@@ -197,9 +196,7 @@ var toolbar = {
     },
     // 保存文档
     save: function(e, item){
-        console.log('按下ctrl+S');
         markdown.file.save();
-        alertify.success('保存成功');
     },
     // 选择文件
     select: function(e, item){
