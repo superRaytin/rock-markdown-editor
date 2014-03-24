@@ -145,7 +145,7 @@ var contextMenuInit = function(){
             markdown.tab.closeOthers();
         }
     }));
-    fileMenu.append(source.separator);
+    fileMenu.append(new gui.MenuItem({ type: 'separator' }));
     fileMenu.append(menuMachine('file-exit', {
         label: '打印 (Ctrl+P)',
         enabled: false,
@@ -153,7 +153,7 @@ var contextMenuInit = function(){
             window.print();
         }
     }));
-    fileMenu.append(source.separator);
+    fileMenu.append(new gui.MenuItem({ type: 'separator' }));
     fileMenu.append(menuMachine('file-exit', {
         label: '退出 (Exit)',
         click: function(){
@@ -185,7 +185,7 @@ var contextMenuInit = function(){
             $('#J-tool-redo').trigger('click');
         }
     }));
-    editMenu.append(source.separator);
+    editMenu.append(new gui.MenuItem({ type: 'separator' }));
     editMenu.append(menuMachine('copy', {
         label: '复制 (Ctrl+C)',
         click: function(){
@@ -211,13 +211,13 @@ var contextMenuInit = function(){
             editor.replaceSelection('');
         }
     }));
-    editMenu.append(source.separator);
+    editMenu.append(new gui.MenuItem({ type: 'separator' }));
     editMenu.append(menuMachine('edit-selAll', {
         label: '全选 (Ctrl+A)',
         click: function(){
             editor.doc.setSelection({line:0,ch:0}, {line: editor.doc.lineCount(), ch:1000})
         }
-    }))
+    }));
     /*editMenu.append(menuMachine('edit-find', {
         label: '查找 (Ctrl+F)',
         click: function(){
@@ -263,7 +263,7 @@ var contextMenuInit = function(){
             markdown.toolbar.pre(1, 1, '###### ');
         }
     }));
-    insertMenu.append(source.separator);
+    insertMenu.append(new gui.MenuItem({ type: 'separator' }));
     insertMenu.append(new gui.MenuItem({
         label: '粗体 (Ctrl+B)',
         click: function(){
@@ -288,33 +288,33 @@ var contextMenuInit = function(){
             $('#J-tool-block').trigger('click');
         }
     }));
-    insertMenu.append(source.separator);
+    insertMenu.append(new gui.MenuItem({ type: 'separator' }));
     insertMenu.append(new gui.MenuItem({
         label: '图片 (Ctrl+G)',
         click: function(){
             $('#J-tool-image').trigger('click');
         }
-    }))
+    }));
     insertMenu.append(new gui.MenuItem({
         label: '链接 (Ctrl+L)',
         click: function(){
             $('#J-tool-link').trigger('click');
         }
     }));
-    insertMenu.append(source.separator);
+    insertMenu.append(new gui.MenuItem({ type: 'separator' }));
     insertMenu.append(new gui.MenuItem({
         label: '无序列表 (Ctrl+U)',
         click: function(){
             $('#J-tool-list').trigger('click');
         }
-    }))
+    }));
     insertMenu.append(new gui.MenuItem({
         label: '水平标尺 (Ctrl+R)',
         click: function(){
             $('#J-tool-hr').trigger('click');
         }
     }));
-    insertMenu.append(source.separator);
+    insertMenu.append(new gui.MenuItem({ type: 'separator' }));
     insertMenu.append(new gui.MenuItem({
         label: '时间戳 (Ctrl+T)',
         click: function(){
@@ -370,15 +370,29 @@ var contextMenuInit = function(){
             $('#J-tool-maxsize').trigger('click');
         }
     }));
-    viewMenu.append(source.separator);
+    viewMenu.append(new gui.MenuItem({ type: 'separator' }));
     viewMenu.append(new gui.MenuItem({
         label: '文件编码',
         enabled: false,
         submenu: encodeSubMenu
     }));
-    viewMenu.append(source.separator);
-    viewMenu.append(source.toolbar);
-    viewMenu.append(source.console);
+    viewMenu.append(new gui.MenuItem({ type: 'separator' }));
+    viewMenu.append(menuMachine('toolbar', {
+        label: '显示工具栏', //提示通过‘查看’可再次打开
+        type: 'checkbox',
+        checked: true,
+        click: function(){
+            showToolOrConsole(this, 'toolbar');
+        }
+    }));
+    viewMenu.append(menuMachine('console', {
+        label: '显示状态栏', //提示通过‘查看’可再次打开
+        type: 'checkbox',
+        checked: true,
+        click: function(){
+            showToolOrConsole(this, 'console');
+        }
+    }));
 
     // 工具 menu
     var toolMenu = new gui.Menu();
@@ -401,7 +415,7 @@ var contextMenuInit = function(){
             markdown.mail.showDialog();
         }
     }));
-    toolMenu.append(source.separator);
+    toolMenu.append(new gui.MenuItem({ type: 'separator' }));
     toolMenu.append(new gui.MenuItem({
         label: '设置',
         click: function(){
@@ -470,7 +484,7 @@ var contextMenuInit = function(){
             gui.Shell.openExternal('https://github.com/superRaytin/Rock_Markdown');
         }
     }));
-    helpMenu.append(source.separator);
+    helpMenu.append(new gui.MenuItem({ type: 'separator' }));
     helpMenu.append(menuMachine('help-update', {
         label: '检查新版本',
         click: function(){
@@ -483,7 +497,7 @@ var contextMenuInit = function(){
             markdown.tab.add('./docs/CHANGELOG.md', true);
         }
     }));
-    helpMenu.append(source.separator);
+    helpMenu.append(new gui.MenuItem({ type: 'separator' }));
     helpMenu.append(menuMachine('help-about', {
         label: '关于 Rock! MarkDown',
         click: function(){
@@ -532,14 +546,45 @@ var contextMenuInit = function(){
 
     // 编码区域 menu
     var codeMenu = new gui.Menu();
-    codeMenu.append(source.copy);
-    codeMenu.append(source.stick);
-    codeMenu.append(source.cut);
-    codeMenu.append(source['edit-delete']);
-    codeMenu.append(source.separator);
-    codeMenu.append(source['edit-selAll']);
-    codeMenu.append(source.separator);
-    codeMenu.append(source['file-saveDoc']);
+    codeMenu.append(new gui.MenuItem({
+        label: '复制 (Ctrl+C)',
+        click: function(){
+            clipboard.set(editor.getSelection());
+        }
+    }));
+    codeMenu.append(new gui.MenuItem({
+        label: '粘贴 (Ctrl+V)',
+        click: function(){
+            editor.replaceSelection(clipboard.get());
+        }
+    }));
+    codeMenu.append(new gui.MenuItem({
+        label: '剪切 (Ctrl+X)',
+        click: function(){
+            clipboard.set(editor.getSelection());
+            editor.replaceSelection('');
+        }
+    }));
+    codeMenu.append(new gui.MenuItem({
+        label: '删除 (Del)',
+        click: function(){
+            editor.replaceSelection('');
+        }
+    }));
+    codeMenu.append(new gui.MenuItem({ type: 'separator' }));
+    codeMenu.append(new gui.MenuItem({
+        label: '全选 (Ctrl+A)',
+        click: function(){
+            editor.doc.setSelection({line:0,ch:0}, {line: editor.doc.lineCount(), ch:1000})
+        }
+    }));
+    codeMenu.append(new gui.MenuItem({ type: 'separator' }));
+    codeMenu.append(new gui.MenuItem({
+        label: '保存文档 (Ctrl+S)',
+        click: function(){
+            $('#J-tool-save').trigger('click');
+        }
+    }));
 
     var menu = {};
     menu.codeMenu = codeMenu;
