@@ -24,7 +24,7 @@
 ## 下载
 最新版本：Beta V0.1.3.1 [changeLog](#changelog)
 
-* Windows 32bit: [云盘下载](http://yunpan.cn/Q4snBywaHAEEk)
+* Windows 32bit: [云盘下载](http://yunpan.cn/Q4snBywaHAEEk) 访问密码：8b68
 
 PS：以上32位版本，在64位系统上测试通过是可以使用的，不过不排除某些情况下失效，原因未知。
 
