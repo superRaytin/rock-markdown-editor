@@ -24,7 +24,7 @@
 ## 下载
 最新版本：Beta V0.1.3.1 [changeLog](#changelog)
 
-* Windows 32bit: [云盘下载](http://yunpan.cn/Q4snBywaHAEEk) 访问密码：8b68
+* Windows 32bit: [云盘下载](http://yunpan.cn/QTFrQmangcXFF) 提取码：9064（提取码是360云盘强制加的，经常有码友发邮件给我说分享地址打不开，如果有这种情况还望告知我好及时更新，当然最好的办法是clone代码自己打包二进制文件~！）
 
 PS：以上32位版本，在64位系统上测试通过是可以使用的，不过不排除某些情况下失效，原因未知。
 
