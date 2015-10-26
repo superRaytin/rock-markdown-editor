@@ -189,7 +189,6 @@ body, button, input, select, textarea{
     border-radius: 4px 4px 0 0;
     margin-right: 4px;
     margin-top: 3px;
-    text-shadow: 1px 1px 4px #000;
     -webkit-transition: all 0.1s ease-in;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -227,7 +226,10 @@ body, button, input, select, textarea{
     white-space: nowrap;
 }
 .tab .modifyflag{
+    display: inline-block;
+    margin-top: -14px;
     padding-right: 5px;
+    vertical-align: middle;
     color: #f90;
 }
 
