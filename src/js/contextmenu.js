@@ -192,7 +192,7 @@ var contextMenuInit = function(){
             markdown.tab.closeOthers();
         }
     }));
-    fileMenu.append(source.separator);
+    fileMenu.append(separatorFactory());
     fileMenu.append(menuMachine('file-exit', {
         label: '打印 (Ctrl+P)',
         enabled: false,
@@ -200,7 +200,7 @@ var contextMenuInit = function(){
             window.print();
         }
     }));
-    fileMenu.append(source.separator);
+    fileMenu.append(separatorFactory());
     fileMenu.append(menuMachine('file-exit', {
         label: '退出 (Exit)',
         click: function(){
@@ -225,7 +225,7 @@ var contextMenuInit = function(){
             $('#J-tool-redo').trigger('click');
         }
     }));
-    editMenu.append(source.separator);
+    editMenu.append(separatorFactory());
     editMenu.append(menuMachine('copy', {
         label: '复制 (Ctrl+C)',
         click: function(){
@@ -251,7 +251,7 @@ var contextMenuInit = function(){
             editor.replaceSelection('');
         }
     }));
-    editMenu.append(source.separator);
+    editMenu.append(separatorFactory());
     editMenu.append(menuMachine('edit-selAll', {
         label: '全选 (Ctrl+A)',
         click: function(){
@@ -303,7 +303,7 @@ var contextMenuInit = function(){
             markdown.toolbar.pre(1, 1, '###### ');
         }
     }));
-    insertMenu.append(source.separator);
+    insertMenu.append(separatorFactory());
     insertMenu.append(new gui.MenuItem({
         label: '粗体 (Ctrl+B)',
         click: function(){
@@ -328,7 +328,7 @@ var contextMenuInit = function(){
             $('#J-tool-block').trigger('click');
         }
     }));
-    insertMenu.append(source.separator);
+    insertMenu.append(separatorFactory());
     insertMenu.append(new gui.MenuItem({
         label: '图片 (Ctrl+G)',
         click: function(){
@@ -341,7 +341,7 @@ var contextMenuInit = function(){
             $('#J-tool-link').trigger('click');
         }
     }));
-    insertMenu.append(source.separator);
+    insertMenu.append(separatorFactory());
     insertMenu.append(new gui.MenuItem({
         label: '无序列表 (Ctrl+U)',
         click: function(){
@@ -354,7 +354,7 @@ var contextMenuInit = function(){
             $('#J-tool-hr').trigger('click');
         }
     }));
-    insertMenu.append(source.separator);
+    insertMenu.append(separatorFactory());
     insertMenu.append(new gui.MenuItem({
         label: '时间戳 (Ctrl+T)',
         click: function(){
@@ -410,13 +410,13 @@ var contextMenuInit = function(){
             $('#J-tool-maxsize').trigger('click');
         }
     }));
-    viewMenu.append(source.separator);
+    viewMenu.append(separatorFactory());
     viewMenu.append(new gui.MenuItem({
         label: '文件编码',
         enabled: false,
         submenu: encodeSubMenu
     }));
-    viewMenu.append(source.separator);
+    viewMenu.append(separatorFactory());
     viewMenu.append(source.toolbar);
     viewMenu.append(source.console);
 
@@ -441,7 +441,7 @@ var contextMenuInit = function(){
             markdown.mail.showDialog();
         }
     }));
-    toolMenu.append(source.separator);
+    toolMenu.append(separatorFactory());
     toolMenu.append(new gui.MenuItem({
         label: '设置',
         click: function(){
@@ -510,7 +510,7 @@ var contextMenuInit = function(){
             gui.Shell.openExternal('https://github.com/superRaytin/Rock_Markdown');
         }
     }));
-    helpMenu.append(source.separator);
+    helpMenu.append(separatorFactory());
     helpMenu.append(menuMachine('help-update', {
         label: '检查新版本',
         click: function(){
@@ -523,7 +523,7 @@ var contextMenuInit = function(){
             markdown.tab.add('./docs/CHANGELOG.md', true);
         }
     }));
-    helpMenu.append(source.separator);
+    helpMenu.append(separatorFactory());
     helpMenu.append(menuMachine('help-about', {
         label: '关于 Rock! MarkDown',
         click: function(){
@@ -570,19 +570,8 @@ var contextMenuInit = function(){
         }
     }));
 
-    // 编码区域 menu
-    var codeMenu = new gui.Menu();
-    codeMenu.append(source.copy);
-    codeMenu.append(source.stick);
-    codeMenu.append(source.cut);
-    codeMenu.append(source['edit-delete']);
-    codeMenu.append(source.separator);
-    codeMenu.append(source['edit-selAll']);
-    codeMenu.append(source.separator);
-    codeMenu.append(source['file-saveDoc']);
 
     var menu = {};
-    menu.codeMenu = codeMenu;
     menu.toolbarMenu = toolbarMenu;
     menu.consoleMenu = consoleMenu;
 

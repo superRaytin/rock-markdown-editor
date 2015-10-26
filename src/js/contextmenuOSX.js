@@ -361,28 +361,28 @@ var aaa = {
         }));
 
         // 工具 menu
-        var toolMenuItems = new gui.Menu();
-        toolMenuItems.append(new gui.MenuItem({
+        var toolMenu = new gui.Menu();
+        toolMenu.append(new gui.MenuItem({
             label: '在浏览器中预览 (Ctrl+F12)',
             click: function(){
                 markdown.file.preview();
             }
         }));
-        toolMenuItems.append(new gui.MenuItem({
+        toolMenu.append(new gui.MenuItem({
             label: '导出为HTML文件',
             click: function(){
                 cache.tabCache.saveType = 'exportHTML';
                 $('#J-hi-savePath').trigger('click');
             }
         }));
-        toolMenuItems.append(new gui.MenuItem({
+        toolMenu.append(new gui.MenuItem({
             label: '发送邮件 (以当前HTML为内容)',
             click: function(){
                 markdown.mail.showDialog();
             }
         }));
-        toolMenuItems.append(separatorFactory());
-        toolMenuItems.append(new gui.MenuItem({
+        toolMenu.append(separatorFactory());
+        toolMenu.append(new gui.MenuItem({
             label: '设置',
             click: function(){
                 $.artDialog({
@@ -426,7 +426,7 @@ var aaa = {
 
         menu.append(new gui.MenuItem({
             label: '工具',
-            submenu: toolMenuItems
+            submenu: toolMenu
         }));
 
         // 帮助 menu
@@ -519,12 +519,22 @@ var aaa = {
             label: '帮助',
             submenu: helpMenu
         }));
-        
-        
+
+        var manyMenus = {};
+        manyMenus.toolbarMenu = toolbarMenuFactory();
+        manyMenus.consoleMenu = consoleMenuFactory();
+        manyMenus.file = fileMenu;
+        manyMenus.insert = insertMenu;
+        manyMenus.view = viewMenu;
+        manyMenus.tool = toolMenu;
+        //menu.history = historyMenu;
+        manyMenus.help = helpMenu;
         
         this.contextMenuSource = source;
 
         gui.Window.get().menu = menu;
+
+        return manyMenus;
     },
 
     contextMenuSource: {}

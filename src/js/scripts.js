@@ -1244,11 +1244,6 @@ $(function(){
             common.resizeWindow();
 
             // 菜单项
-            $('#codeMirror').on('contextmenu', function(ev){
-                ev.preventDefault();
-                context.codeMenu.popup(ev.clientX, ev.clientY);
-                return false;
-            });
             $('#J-toolbar').on('contextmenu', function(ev){
                 ev.preventDefault();
                 context.toolbarMenu.popup(ev.clientX, ev.clientY);
