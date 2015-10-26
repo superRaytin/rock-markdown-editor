@@ -1029,18 +1029,18 @@ $(function(){
                     // 标识从加载本地数据时进入
                     cache.tempFlag = 'localData';
 
-                    menuSource['toolbar'].click();
+                    menuSource.toolbarMenuFactory().click();
                 }
                 if(memory.console === false){
                     // 标识从加载本地数据时进入
                     cache.tempFlag = 'localData';
 
-                    menuSource['console'].click();
+                    menuSource.consoleMenuFactory().click();
                 }
 
                 // 载入历史记录
                 if(memory.historyList){
-                    menuSource.file.append(menuSource.separator);
+                    menuSource.file.append(menuSource.separatorFactory());
                     $.each(memory.historyList, function(i, item){
                         menuSource.file.append(new cache.gui.MenuItem({
                             label: item,
@@ -1049,8 +1049,8 @@ $(function(){
                             }
                         }));
                     });
-                    menuSource.file.append(menuSource.separator);
-                    menuSource.file.append(menuSource['file-clearHistory']);
+                    menuSource.file.append(menuSource.separatorFactory());
+                    menuSource.file.append(menuSource.clearHistoryMenuFactory());
                 }
 
                 // 记录到 localStorage内容有变 重新保存
@@ -1210,7 +1210,17 @@ $(function(){
         // 监听
         observer: function(){
             markdown.mail = require('./js/mail');
-            var contextmenu = require('./js/contextmenu');
+            var contextmenu;
+
+            // Mac OS X
+            if (isMacOS) {
+                contextmenu = require('./js/contextmenuOSX');
+            }
+            // Windows || Linux
+            else {
+                contextmenu = require('./js/contextmenu');
+            }
+
             markdown.toolbar = require('./js/toolbar');
             markdown.tab = require('./js/tab');
             markdown.file = require('./js/file');
