@@ -3,10 +3,11 @@
  * User: raytin
  * Date: 13-7-28
  */
+
 module.exports = {
-    "name": "Rock! MarkDown Editor",
-    "version": "0.1.2",
-    "updateURL": "http://www.jsfor.com/project/rock/update.json",
+    "name": "Rock! Markdown Editor",
+    "version": "0.2.0",
+    "updateURL": "https://github.com/superRaytin/Rock_Markdown/blob/master/js/update.json",
     "memory": {
         "realtime": true, // 实时预览
         "maxsize": false, // 最大化
