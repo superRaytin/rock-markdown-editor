@@ -1,8 +1,11 @@
-### 0.1.3 (2014.01.12)
-- `重要` `Fix` 修复关闭软件时，提示保存未保存的文档时跳错的bug;
-- `优化` 改进邮件历史联系人使用体验；
-- `增加` 文件编辑过程中在别处被改动，可进行手动重载；
-- `优化` 优化启动速度；
+### 0.2.0 (2015.10.26)
+- Remove directory node_modules.
+
+### 0.1.3 (2014.01.13)
+- `Fix` prompt to save but actually not saved when exit.
+- Improve history email contacts.
+- Add 'Manual-overload' as file was edit elsewhere.
+- Improve start-up speed.
 
 ### 0.1.2
 - 拖拽导入文件的bug;
