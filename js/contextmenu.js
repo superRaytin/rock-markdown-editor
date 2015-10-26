@@ -24,6 +24,53 @@ var contextMenuInit = function(){
         return (source[name] = new gui.MenuItem(option));
     }
 
+    var separatorFactory = function() {
+        var menuItem = new gui.MenuItem({
+            type: 'separator'
+        });
+        return menuItem;
+    }
+
+    var clearHistoryMenuFactory = function() {
+        var menuItem = new gui.MenuItem({
+            label: '清除所有历史记录',
+            click: function(){
+                markdown.userFootprint.clearHistoryInMenu();
+                markdown.userFootprint.clearInMemory('historyList');
+            }
+        });
+        return menuItem;
+    }
+
+    var toolbarMenuFactory = function() {
+        var menuItem = new gui.MenuItem({
+            label: '显示工具栏', //提示通过‘查看’可再次打开
+            type: 'checkbox',
+            checked: true,
+            click: function(){
+                showToolOrConsole(this, 'toolbar');
+            }
+        });
+        return menuItem;
+    }
+
+    var consoleMenuFactory = function() {
+        var menuItem = new gui.MenuItem({
+            label: '显示状态栏', //提示通过‘查看’可再次打开
+            type: 'checkbox',
+            checked: true,
+            click: function(){
+                showToolOrConsole(this, 'console');
+            }
+        });
+        return menuItem;
+    }
+
+    source.separatorFactory = separatorFactory;
+    source.clearHistoryMenuFactory = clearHistoryMenuFactory;
+    source.toolbarMenuFactory = toolbarMenuFactory;
+    source.consoleMenuFactory = consoleMenuFactory;
+
     function showToolOrConsole(that, type){
         var footer = $('#J-footer'),
             toolbar = $('#J-toolbar'),
@@ -161,13 +208,6 @@ var contextMenuInit = function(){
         }
     }));
 
-    menuMachine('file-clearHistory', {
-        label: '清除所有历史记录',
-        click: function(){
-            markdown.userFootprint.clearHistoryInMenu();
-            markdown.userFootprint.clearInMemory('historyList');
-        }
-    });
     source.file = fileMenu;
 
 
