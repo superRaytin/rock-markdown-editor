@@ -3,13 +3,19 @@
  * User: raytin
  * Date: 13-7-14
  */
-var fs = require('fs'),
-    modPath = require('path'),
-    cheerio = require('cheerio'),
-    iconv = require('iconv-lite'),
-    settings = require('./js/config');
+var fs = require('fs');
+var modPath = require('path');
+var cheerio = require('cheerio');
+var iconv = require('iconv-lite');
+var request = require('request');
+var settings = require('./js/config');
+
+var NWGui = require('nw.gui');
 
 global.$ = $;
+
+var platform = process.platform;
+var isMacOS = platform === 'darwin';
 
 $(function(){
     var cache = {
@@ -1178,15 +1184,22 @@ $(function(){
             }
         },
         inaugurate: function(){
-            // 初始默认载入readme
-            !cache.doNotLoadIntro && markdown.tab.add('./docs/INTRODUCTION.md', true);
+            var frame = $('#showdown iframe');
+
+            // 预览 iframe 加载完毕再加载文件
+            frame.on('load', function() {
+                // 初始默认载入readme
+                !cache.doNotLoadIntro && markdown.tab.add('./docs/INTRODUCTION.md', true);
+            });
 
             setTimeout(function(){
-                var can = $('#opening_mask, #opening_canvas'),checked = false;
+                var canvas = $('#opening_mask, #opening_canvas');
+                var checked = false;
 
-                can.fadeOut(600, function(){
+                canvas.fadeOut(600, function(){
                     if(checked) return;
-                    can.remove();
+
+                    canvas.remove();
 
                     // 自动检查更新
                     checked = true;
@@ -1202,12 +1215,12 @@ $(function(){
             markdown.tab = require('./js/tab');
             markdown.file = require('./js/file');
 
-            var editor = codeEditor.codeMirrorInit('markdown'),
-                preview = $('#showdown'),
-                toolbar = this.toolbar,
-                cache = this.cache,
-                menuItem = $('.menu .item'),
-                context = contextmenu.init();
+            var editor = codeEditor.codeMirrorInit('markdown');
+            var preview = $('#showdown');
+            var toolbar = this.toolbar;
+            var cache = this.cache;
+            var menuItem = $('.menu .item');
+            var context = contextmenu.init();
 
             cache.menuSource = contextmenu.contextMenuSource;
 
@@ -1417,7 +1430,7 @@ $(function(){
         init: function(){
             global.markdown = markdown;
 
-            var gui = this.cache.gui || (this.cache.gui = require('nw.gui'));
+            var gui = this.cache.gui || (this.cache.gui = NWGui);
             var guiWin = this.cache.guiWin || (this.cache.guiWin = gui.Window.get());
 
             // 设置窗口宽高
@@ -1433,12 +1446,22 @@ $(function(){
             guiWin.show();
              */
 
+            // Mac OS X
+            if (isMacOS) {
+                $('#J-menubar').addClass('hide');
+                $('#J-toolbar').get(0).style.top = 0 + 'px';
+                $('#J-tab').get(0).style.top = 26 + 'px';
+                $('#codeMirror').get(0).style.top = 56 + 'px';
+                $('#showdown').get(0).style.top = 56 + 'px';
+            }
+
             this.observer();
 
             console.log('init ending..');
             this.inaugurate();
         }
     };
+
     markdown.init();
 });
 
