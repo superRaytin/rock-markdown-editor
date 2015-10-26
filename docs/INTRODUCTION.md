@@ -1,9 +1,9 @@
 ![Rock MarkDown Editor](logo.png)
 
-#Rock! MarkDown Editor
+# Rock! MarkDown Editor
 Fast Markdown document editor.
 
-##Features
+## Features
 
 - Edit with WYSIWYG, use Ctrl+F12 to quick browser preview.
 - Rich keyboard shortcuts.
@@ -11,7 +11,7 @@ Fast Markdown document editor.
 - Convenient toolbar
 - Powerful import and export.
 - Support drag and drop, support `.markdown` `.md` `.txt` formats.
-- Export to HTML file.
+- Support export to HTML file.
 - Support email, send email with HTML.
 - Friendly state holding, Automatic remember editor status of the last time.
 - Completely history file records.
@@ -19,7 +19,7 @@ Fast Markdown document editor.
 
 To be continued...
 
-##Thanks to the following projects
+## Thanks to the following projects
 
 - [Node-webkit](https://github.com/rogerwang/node-webkit)
 - [Node](http://nodejs.org/)
