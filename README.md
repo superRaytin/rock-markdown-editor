@@ -1,11 +1,11 @@
-![Rock MarkDown Editor](logo.png)
+![Rock Markdown Editor](logo.png)
 
-# Rock! MarkDown Editor
+# Rock! Markdown Editor
 Fast Markdown document editor.
 
 ScreenShot:
 
-![Rock MarkDown Editor](/docs/z.png)
+![Rock Markdown Editor](/docs/z.png)
 
 ## Features
 
@@ -14,7 +14,7 @@ ScreenShot:
 - Support multi-tab.
 - Convenient toolbar
 - Powerful import and export.
-- Support drag and drop, support `.markdown` `.md` `.txt` formats.
+- Support drag and drop, support `.Markdown` `.md` `.txt` formats.
 - Support export to HTML file.
 - Support email, send email with HTML.
 - Friendly state holding, Automatic remember editor status of the last time.
