@@ -37,11 +37,11 @@ body, button, input, select, textarea{
 .container{
     padding: 20px;
 }
-.container: before,.container: after {
+.container:before,.container:after {
     content: " ";
     display: table
 }
-.container: after {
+.container:after {
     clear: both
 }
 
@@ -600,7 +600,7 @@ label.required:before{
 /* opening animate */
 @font-face{
     font-family:'Rock AxeHandel';
-    src:url('fonts/AxeHandel.ttf') format('truetype')
+    src:url('../lib/css/fonts/AxeHandel.ttf') format('truetype')
 }
 @-webkit-keyframes background1{
     from{background: #333}

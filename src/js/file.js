@@ -196,7 +196,7 @@ var file = {
     }
     /*loadZip: function(zipName, savePath, callback){
         var req = http.request({
-            hostname: 'www.jsfor.com',
+            hostname: 'github.com/superRaytin/Rock_Markdown',
             path: '/project/rock/' + zipName + '.zip',
             method: 'GET'
         }, function(res){

@@ -1,9 +1,9 @@
 {
   "name": "RockMarkdownEditor",
   "version": "0.2.0",
-  "main": "markdown.html",
+  "main": "src/markdown.html",
   "window": {
-    "icon": "img/ico.png",
+    "icon": "src/img/ico.png",
     "show": false,
     "position": "center",
     "toolbar": false,

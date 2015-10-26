@@ -7,10 +7,10 @@ body{
     line-height: 1.6;
     overflow: auto;
 }
-.markdown-body>*: first-child {
+.markdown-body>*:first-child {
     margin-top: 0 !important
 }
-.markdown-body>*: last-child {
+.markdown-body>*:last-child {
     margin-bottom: 0 !important
 }
 .markdown-body a.absent {
@@ -38,14 +38,14 @@ body{
     display: none;
     color: #000
 }
-.markdown-body h1: hover a.anchor,.markdown-body h2: hover a.anchor,.markdown-body h3: hover a.anchor,.markdown-body h4: hover a.anchor,.markdown-body h5: hover a.anchor,.markdown-body h6: hover a.anchor {
+.markdown-body h1:hover a.anchor,.markdown-body h2:hover a.anchor,.markdown-body h3:hover a.anchor,.markdown-body h4:hover a.anchor,.markdown-body h5:hover a.anchor,.markdown-body h6:hover a.anchor {
     text-decoration: none;
     line-height: 1;
     padding-left: 0;
     margin-left: -22px;
     top: 15%
 }
-.markdown-body h1: hover a.anchor .octicon-link,.markdown-body h2: hover a.anchor .octicon-link,.markdown-body h3: hover a.anchor .octicon-link,.markdown-body h4: hover a.anchor .octicon-link,.markdown-body h5: hover a.anchor .octicon-link,.markdown-body h6: hover a.anchor .octicon-link {
+.markdown-body h1:hover a.anchor .octicon-link,.markdown-body h2:hover a.anchor .octicon-link,.markdown-body h3:hover a.anchor .octicon-link,.markdown-body h4:hover a.anchor .octicon-link,.markdown-body h5:hover a.anchor .octicon-link,.markdown-body h6:hover a.anchor .octicon-link {
     display: inline-block
 }
 .markdown-body h1 tt,.markdown-body h1 code,.markdown-body h2 tt,.markdown-body h2 code,.markdown-body h3 tt,.markdown-body h3 code,.markdown-body h4 tt,.markdown-body h4 code,.markdown-body h5 tt,.markdown-body h5 code,.markdown-body h6 tt,.markdown-body h6 code {
@@ -116,10 +116,10 @@ body{
     padding: 0 15px;
     color: #777
 }
-.markdown-body blockquote>: first-child {
+.markdown-body blockquote>:first-child {
     margin-top: 0px
 }
-.markdown-body blockquote>: last-child {
+.markdown-body blockquote>:last-child {
     margin-bottom: 0px
 }
 .markdown-body table {
@@ -138,7 +138,7 @@ body{
     border-top: 1px solid #ccc;
     background-color: #fff
 }
-.markdown-body table tr: nth-child(2n) {
+.markdown-body table tr:nth-child(2n) {
     background-color: #f8f8f8
 }
 .markdown-body img {
