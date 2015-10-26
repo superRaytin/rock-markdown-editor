@@ -15,7 +15,7 @@ ScreenShot:
 - Convenient toolbar
 - Powerful import and export.
 - Support drag and drop, support `.markdown` `.md` `.txt` formats.
-- Export to HTML file.
+- Support export to HTML file.
 - Support email, send email with HTML.
 - Friendly state holding, Automatic remember editor status of the last time.
 - Completely history file records.
@@ -35,9 +35,9 @@ If unable to download, You may try to clone this repository and compile to binar
 ## Thanks to the following projects
 
 - [Node-webkit](https://github.com/rogerwang/node-webkit)
-- [Node](http://nodejs.org/)
-- [codeMirror](http://codemirror.net)
-- [showdown](https://github.com/coreyti/showdown)
+- [Node.js](http://nodejs.org/)
+- [CodeMirror](http://codemirror.net)
+- [Showdown](https://github.com/coreyti/showdown)
 
 ## ChangeLog
 
