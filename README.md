@@ -1,4 +1,4 @@
-![Rock Markdown Editor](logo.png)
+![Rock Markdown Editor](/src/logo.png)
 
 # Rock! Markdown Editor
 Fast Markdown document editor.

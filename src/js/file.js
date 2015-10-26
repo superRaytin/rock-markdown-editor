@@ -179,7 +179,7 @@ var file = {
             headCon = frameContent.find('head').html(),
             bodyCon = frameContent.find('body').html();
 
-        markdown.loadFile('./preview.html', function(data){
+        markdown.loadFile('./src/preview.html', function(data){
             var j = cheerio.load(data),
                 locate = window.location.href;
 
@@ -187,7 +187,7 @@ var file = {
             j('head').find('title').text('Rock! MarkDown Editor preview');
             j('body').html(bodyCon);
 
-            fs.writeFile('./preview.html', j.html(), function(e){
+            fs.writeFile('./src/preview.html', j.html(), function(e){
                 if(e) return console.log(e);
                 console.log('在浏览器中打开');
                 cache.gui.Shell.openExternal(locate.substr(0, locate.lastIndexOf('/')) + '/preview.html');
