@@ -1,53 +1,56 @@
 ![Rock MarkDown Editor](logo.png)
-#Rock! MarkDown是什么
-基于 [Node-webkit](https://github.com/rogerwang/node-webkit) 实现，快速的markdown文档编辑器
+
+# Rock! MarkDown Editor
+Fast Markdown document editor.
+
+ScreenShot:
 
 ![Rock MarkDown Editor](/docs/z.png)
 
-##Rock! MarkDown有哪些功能
+## Features
 
-* 编辑和预览，`所见即所得`，Ctrl+F12快速浏览器预览
-* N多的`快捷键`，快速写文档，让时间飞一会儿
-* `多标签`功能，N多文档不用愁
-* 便利地`工具栏`，忘记markdown格式也不怕
-* 支持webstorm风格的部分常用快捷键
-* 方便的`导入导出`功能
-    *  将`.markdown` `.md` `.txt`格式的文件拖到编辑器即可
-    *  将当前内容导出为一个HTML文件
-* `邮件`发送功能，直接将HTML内容发送到指定邮箱
-* `自动记忆`记住上次退出时的状态
-* 完整的`历史记录`功能
-* 无任何依赖环境，直接安装即可运行
+- Edit with WYSIWYG, use Ctrl+F12 to quick browser preview.
+- Rich keyboard shortcuts.
+- Support multi-tab.
+- Convenient toolbar
+- Powerful import and export.
+- Support drag and drop, support `.markdown` `.md` `.txt` formats.
+- Export to HTML file.
+- Support email, send email with HTML.
+- Friendly state holding, Automatic remember editor status of the last time.
+- Completely history file records.
+- Without any dependence, run when installed.
 
-更多功能开发中 ......
+To be continued...
 
-## 下载
-最新版本：Beta V0.1.3.1 [changeLog](#changelog)
+## Download
+Latest: Beta V0.2.0 [changeLog](#changelog)
 
-* Windows 32bit: [云盘下载](http://pan.baidu.com/s/1i39lPyd)（经常有码友发邮件给我说分享地址打不开，后来发现360云盘经常抽风，现换成百度云盘，当然最好的办法是clone代码自己打包二进制文件~！）
+- Windows 32bit: [V0.2.0](http://pan.baidu.com/s/1i39lPyd)
 
-PS：以上32位版本，在64位系统上测试通过是可以使用的，不过不排除某些情况下失效，原因未知。
+> The above 32-bit version also has been tested on 64-bit and can be used. the exact reason is unknown. If u know, please tell me.
 
-##感谢以下项目
+If unable to download, You may try to clone this repository and compile to binary file.
 
-* [Node-webkit](https://github.com/rogerwang/node-webkit)
-* [Node](http://nodejs.org/)
-* [codeMirror](http://codemirror.net)
-* [showdown](https://github.com/coreyti/showdown)
+## Thanks to the following projects
 
-##反馈
-使用中有任何问题与建议，欢迎反馈给我，以下方式可以联系到我
-
-* superRaytin#163.com, 把#换成@
+- [Node-webkit](https://github.com/rogerwang/node-webkit)
+- [Node](http://nodejs.org/)
+- [codeMirror](http://codemirror.net)
+- [showdown](https://github.com/coreyti/showdown)
 
 ## ChangeLog
+
+### 0.2.0 (2015.10.26)
+- Remove directory node_modules.
+
 ### 0.1.3 (2014.01.13)
-- `重要` `Fix` 修复关闭软件时，提示保存未保存的文档时跳错的bug;
-- `优化` 改进邮件历史联系人使用体验；
-- `增加` 文件编辑过程中在别处被改动，可进行手动重载；
-- `优化` 优化启动速度；
+- `Fix` prompt to save but actually not saved when exit.
+- Improve history email contacts.
+- Add 'Manual-overload' as file was edit elsewhere.
+- Improve start-up speed.
 
 # License
-本项目基于MIT协议发布
+Released under the MIT license.
 
-MIT: [http://rem.mit-license.org](http://rem.mit-license.org/) 详见 [LICENSE](/LICENSE) 文件
+MIT: [http://rem.mit-license.org](http://rem.mit-license.org/), See [LICENSE](/LICENSE)
