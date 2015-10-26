@@ -22,6 +22,6 @@ To be continued...
 ## Thanks to the following projects
 
 - [Node-webkit](https://github.com/rogerwang/node-webkit)
-- [Node](http://nodejs.org/)
-- [codeMirror](http://codemirror.net)
-- [showdown](https://github.com/coreyti/showdown)
+- [Node.js](http://nodejs.org/)
+- [CodeMirror](http://codemirror.net)
+- [Showdown](https://github.com/coreyti/showdown)
