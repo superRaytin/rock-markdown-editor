@@ -1,5 +1,5 @@
 {
-  "name": "Rock! Markdown Editor",
+  "name": "RockMarkdownEditor",
   "version": "0.1.2",
   "main": "markdown.html",
   "window": {
