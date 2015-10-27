@@ -1,10 +1,9 @@
 ![Rock Markdown Editor](/src/logo.png)
 
-# Rock! Markdown Editor
-Fast Markdown document editor.
+## Rock! Markdown Editor
+Cross-platform Markdown Editor.
 
-ScreenShot:
-
+## ScreenShot
 ![Rock Markdown Editor](/docs/z.png)
 
 ## Features
@@ -20,17 +19,6 @@ ScreenShot:
 - Friendly state holding, Automatic remember editor status of the last time.
 - Completely history file records.
 - Without any dependence, run when installed.
-
-To be continued...
-
-## Download
-Latest: Beta V0.2.0 [changeLog](#changelog)
-
-- Windows 32bit: [V0.2.0](http://pan.baidu.com/s/1i39lPyd)
-
-> The above 32-bit version also has been tested on 64-bit and can be used. the exact reason is unknown. If u know, please tell me.
-
-If unable to download, You may try to clone this repository and compile to binary file.
 
 ## Thanks to the following projects
 
