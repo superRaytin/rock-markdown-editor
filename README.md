@@ -21,8 +21,6 @@ ScreenShot:
 - Completely history file records.
 - Without any dependence, run when installed.
 
-To be continued...
-
 ## Download
 Latest: Beta V0.2.0 [changeLog](#changelog)
 
