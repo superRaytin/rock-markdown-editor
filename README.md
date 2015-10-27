@@ -1,24 +1,28 @@
 ![Rock Markdown Editor](/src/logo.png)
 
-## Rock! Markdown Editor
+# Rock! Markdown Editor
 Cross-platform Markdown Editor.
-
-## ScreenShot
-![Rock Markdown Editor](/docs/z.png)
 
 ## Features
 
-- Edit with WYSIWYG, use Ctrl+F12 to quick browser preview.
-- Rich keyboard shortcuts.
-- Support multi-tab.
-- Convenient toolbar
+- WYSIWYG, Ctrl+F12 quick browser preview.
 - Powerful import and export.
 - Support drag and drop, support `.Markdown` `.md` `.txt` formats.
 - Support export to HTML file.
-- Support email, send email with HTML.
+- Support send email with converted HTML.
+- Support multi-tab and rich keyboard shortcuts.
 - Friendly state holding, Automatic remember editor status of the last time.
 - Completely history file records.
-- Without any dependence, run when installed.
+
+## ScreenShot
+
+### Windows
+
+![Rock Markdown Editor](/docs/windowshow.png)
+
+### Mac
+
+![Rock Markdown Editor](/docs/macshow.png)
 
 ## Thanks to the following projects
 
