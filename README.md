@@ -1,10 +1,9 @@
 ![Rock Markdown Editor](/src/logo.png)
 
-# Rock! Markdown Editor
-Fast Markdown document editor.
+## Rock! Markdown Editor
+Cross-platform Markdown Editor.
 
-ScreenShot:
-
+## ScreenShot
 ![Rock Markdown Editor](/docs/z.png)
 
 ## Features
@@ -21,15 +20,6 @@ ScreenShot:
 - Completely history file records.
 - Without any dependence, run when installed.
 
-## Download
-Latest: Beta V0.2.0 [changeLog](#changelog)
-
-- Windows 32bit: [V0.2.0](http://pan.baidu.com/s/1i39lPyd)
-
-> The above 32-bit version also has been tested on 64-bit and can be used. the exact reason is unknown. If u know, please tell me.
-
-If unable to download, You may try to clone this repository and compile to binary file.
-
 ## Thanks to the following projects
 
 - [Node-webkit](https://github.com/rogerwang/node-webkit)
@@ -40,6 +30,8 @@ If unable to download, You may try to clone this repository and compile to binar
 ## ChangeLog
 
 ### 0.2.0 (2015.10.26)
+- Better support for mac.
+- Rearrange file directory structure.
 - Remove directory node_modules.
 
 ### 0.1.3 (2014.01.13)
