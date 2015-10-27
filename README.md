@@ -16,12 +16,6 @@ Cross-platform Markdown Editor.
 
 ## ScreenShot
 
-### Windows
-
-![Rock Markdown Editor](/docs/windowshow.png)
-
-### Mac
-
 ![Rock Markdown Editor](/docs/macshow.png)
 
 ## Downloads
