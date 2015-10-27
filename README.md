@@ -24,6 +24,16 @@ Cross-platform Markdown Editor.
 
 ![Rock Markdown Editor](/docs/macshow.png)
 
+## Downloads
+
+Latest: v0.2.0 [changeLog](#changelog)
+
+- Mac 10.7+: [32bit](https://www.dropbox.com/s/e9f1x258qi193es/Rock_Markdown_v0.2.0_osx32.zip?dl=0) / [64bit](https://www.dropbox.com/s/i0x1slhovyq3o0b/Rock_Markdown_v0.2.0_osx64.zip?dl=0)
+- Windows: 32bit / 64bit
+- Linux: [32bit](https://www.dropbox.com/s/u7zoyg3mkm2oq2i/Rock_Markdown_v0.2.0_linux32.zip?dl=0) / [64bit](https://www.dropbox.com/s/otwpvfi4ycs5oj4/Rock_Markdown_v0.2.0_linux64.zip?dl=0)
+
+If unable to download, You may try to clone this repository and [compile](http://strongloop.com/strongblog/creating-desktop-applications-with-node-webkit/) to binary file.
+
 ## Thanks to the following projects
 
 - [Node-webkit](https://github.com/rogerwang/node-webkit)
