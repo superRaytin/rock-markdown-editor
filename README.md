@@ -30,6 +30,8 @@ Cross-platform Markdown Editor.
 ## ChangeLog
 
 ### 0.2.0 (2015.10.26)
+- Better support for mac.
+- Rearrange file directory structure.
 - Remove directory node_modules.
 
 ### 0.1.3 (2014.01.13)
