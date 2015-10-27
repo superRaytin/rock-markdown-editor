@@ -189,6 +189,7 @@ body, button, input, select, textarea{
     border-radius: 4px 4px 0 0;
     margin-right: 4px;
     margin-top: 3px;
+    text-shadow: 1px 1px 0px #000;
     -webkit-transition: all 0.1s ease-in;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -628,10 +629,12 @@ label.required:before{
 }
 #canvas_inner{
     position: absolute;
-    left: 30%;
-    top: 30%;
+    left: 50%;
+    top: 50%;
     width: 460px;
     height: 181px;
+    margin-left: -230px;
+    margin-top: -140px;
     background: url('../img/mask.png') no-repeat;
 }
 .canvas_rolling{
