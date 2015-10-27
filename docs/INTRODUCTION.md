@@ -17,8 +17,6 @@ Fast Markdown document editor.
 - Completely history file records.
 - Without any dependence, run when installed.
 
-To be continued...
-
 ## Thanks to the following projects
 
 - [Node-webkit](https://github.com/rogerwang/node-webkit)
