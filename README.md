@@ -26,7 +26,8 @@ Latest: v0.2.0 [changeLog](#changelog)
 - Windows: [32bit](https://www.dropbox.com/s/m5237obl3qgl3qy/Rock_Markdown_v0.2.0_win32.zip?dl=0) / [64bit](https://www.dropbox.com/s/5qon41y051ofjl2/Rock_Markdown_v0.2.0_win64.zip?dl=0)
 - Linux: [32bit](https://www.dropbox.com/s/u7zoyg3mkm2oq2i/Rock_Markdown_v0.2.0_linux32.zip?dl=0) / [64bit](https://www.dropbox.com/s/otwpvfi4ycs5oj4/Rock_Markdown_v0.2.0_linux64.zip?dl=0)
 
-If unable to download, You may try to clone this repository and [compile](http://strongloop.com/strongblog/creating-desktop-applications-with-node-webkit/) to binary file.
+The above is hosted on Dropbox, you may need proxy software (In China, u know, the GFW).
+Or you may try to clone this repository and [compile](http://strongloop.com/strongblog/creating-desktop-applications-with-node-webkit/) to binary file.
 
 ## Thanks to the following projects
 
