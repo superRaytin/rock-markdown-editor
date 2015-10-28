@@ -20,7 +20,7 @@ Cross-platform Markdown Editor.
 
 ## Downloads
 
-Latest: **v0.2.0-beta1** [changeLog](#changelog)
+Latest: **v0.2.0** [changeLog](#changelog)
 
 - Mac 10.7+: [32bit](https://www.dropbox.com/s/e9f1x258qi193es/Rock_Markdown_v0.2.0_osx32.zip?dl=0) / [64bit](https://www.dropbox.com/s/i0x1slhovyq3o0b/Rock_Markdown_v0.2.0_osx64.zip?dl=0)
 - Windows: [32bit](https://www.dropbox.com/s/m5237obl3qgl3qy/Rock_Markdown_v0.2.0_win32.zip?dl=0) / [64bit](https://www.dropbox.com/s/5qon41y051ofjl2/Rock_Markdown_v0.2.0_win64.zip?dl=0)
@@ -38,7 +38,7 @@ Or you may try to clone this repository and [compile](http://strongloop.com/stro
 
 ## ChangeLog
 
-### 0.2.0-beta1 (2015.10.26)
+### 0.2.0 (2015.10.26)
 - Better support for mac.
 - Rearrange file directory structure.
 - Remove directory node_modules.
