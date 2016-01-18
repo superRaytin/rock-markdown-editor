@@ -1,8 +1,7 @@
 /**
  * file.
- * User: raytin
- * Date: 13-7-30
  */
+
 var markdown = global.markdown,
     require = global.require,
     window = global.window,
@@ -17,43 +16,43 @@ var markdown = global.markdown,
 
 // 文件操作
 var file = {
-    save: function(){
+    save: function() {
         var currentTab = markdown.tab.getCurrentTab(),
             tabType = currentTab.type,
             savePath = $('#J-hi-savePath'),
             defaultPath = markdown.rockSettings.getDetailPath();
 
-        //if(currentTab.modify){
+        //if (currentTab.modify) {
         // blank
-        if(tabType === 'blank'){
+        if (tabType === 'blank') {
             cache.tabCache.saveType = 'blank';
 
-            if(defaultPath){
+            if (defaultPath) {
                 savePath.attr('nwworkingdir', defaultPath);
             }
 
             savePath.trigger('click');
         }
         // file
-        else if(currentTab.modify){
+        else if (currentTab.modify) {
             markdown.writeToFile(currentTab.path, cache.editor.getValue());
             markdown.updateTabInfo(currentTab.path, 'save');
         }
         //}
     },
     // 从磁盘删除文件
-    delFileFromDisk: function(){
+    delFileFromDisk: function() {
         var currentTab = markdown.tab.getCurrentTab(),
             curTabId = currentTab.id,
             member = cache.tabCache.member[curTabId],
             filePath, fileName;
 
-        if(currentTab.type === 'file'){
+        if (currentTab.type === 'file') {
             filePath = currentTab.path;
             fileName = modPath.basename(filePath);
-            if(fs.existsSync(filePath) && window.confirm('将会从磁盘删除文件 '+ fileName +'，确定吗？')){
-                fs.unlink(filePath, function(err){
-                    if(err) return console.log('删除文件异常： ' + err);
+            if (fs.existsSync(filePath) && window.confirm('将会从磁盘删除文件 '+ fileName +'，确定吗？')) {
+                fs.unlink(filePath, function(err) {
+                    if (err) return console.log('删除文件异常： ' + err);
                     console.log('成功删除 ' + filePath);
 
                     member.modify = false;
@@ -63,11 +62,11 @@ var file = {
         }
     },
     // 另存为
-    saveAs: function(){
+    saveAs: function() {
         var savePath = $('#J-hi-savePath'),
             defaultPath = markdown.rockSettings.getDetailPath();
 
-        if(defaultPath){
+        if (defaultPath) {
             savePath.attr('nwworkingdir', defaultPath);
         }
 
@@ -75,7 +74,7 @@ var file = {
         savePath.trigger('click');
     },
     // blank 文件存储至指定路径
-    saveToPath: function(path, saveTabId){
+    saveToPath: function(path, saveTabId) {
         var curTab = markdown.tab.getCurrentTab(),
             curTabId = curTab.id,
             content = cache.editor.getValue(),
@@ -84,15 +83,15 @@ var file = {
             fileNameDotIndex = fileName.lastIndexOf('.'),
             suffix = markdown.rockSettings.getItemInLocal('extension') || 'md';
 
-        if( fileNameDotIndex == -1 || (fileNameDotIndex != -1 && !/^(md|markdown|txt)$/i.test(fileName.substr(fileNameDotIndex + 1)) )){
+        if ( fileNameDotIndex == -1 || (fileNameDotIndex != -1 && !/^(md|markdown|txt)$/i.test(fileName.substr(fileNameDotIndex + 1)) )) {
             path = path + '.' + suffix;
         }
 
         markdown.userFootprint.saveHistory(path);
 
         // 保存的blank标签并没有高亮
-        if(saveTabId){
-            if(curTabId !== saveTabId){
+        if (saveTabId) {
+            if (curTabId !== saveTabId) {
                 content = tabCache.member[saveTabId].data;
             }
         }
@@ -101,14 +100,14 @@ var file = {
         markdown.updateTabInfo(path, 'open');
 
         // 场景：当前标签为file，另存为操作，需要删除适配表里 旧文件关联
-        if(curTab.type === 'file'){
+        if (curTab.type === 'file') {
             delete tabCache.fileName_tabId[curTab.path];
         }
 
         this.afterSaveToPath(path);
     },
     // 关闭带*号blank标签 点击保存时 —— normalTabIdForClose:关闭的标签ID
-    savePathAndClose: function(path, normalTabIdForClose, callback){
+    savePathAndClose: function(path, normalTabIdForClose, callback) {
         var curTab = markdown.tab.getCurrentTab(),
             curTabId = curTab.id,
             content = cache.editor.getValue(),
@@ -118,12 +117,12 @@ var file = {
             suffix = markdown.rockSettings.getItemInLocal('extension') || 'md',
             closeTabId = normalTabIdForClose;
 
-        if( fileNameDotIndex == -1 || (fileNameDotIndex != -1 && !/^(md|markdown|txt)$/i.test(fileName.substr(fileNameDotIndex + 1)) )){
+        if ( fileNameDotIndex == -1 || (fileNameDotIndex != -1 && !/^(md|markdown|txt)$/i.test(fileName.substr(fileNameDotIndex + 1)) )) {
             path = path + '.' + suffix;
         }
 
         // 自动关闭的是 其他普通blank标签
-        if(curTabId !== closeTabId){
+        if (curTabId !== closeTabId) {
             content = tabCache.member[closeTabId].data;
         }
 
@@ -136,7 +135,7 @@ var file = {
 
         callback && callback();
     },
-    afterSaveToPath: function(path){
+    afterSaveToPath: function(path) {
         // 保存之后清空save file的值
         $('#J-hi-savePath').val('');
 
@@ -146,21 +145,21 @@ var file = {
         console.log('最后保存的路径：' + path);
     },
     // 查看文件目录
-    viewPath: function(){
+    viewPath: function() {
         var curTab = markdown.tab.getCurrentTab(),
             path = curTab.path;
-        if(curTab.type === 'file'){
+        if (curTab.type === 'file') {
             cache.gui.Shell.showItemInFolder(path);
         }
     },
     // 导出HTML文件
-    exportHTML: function(path){
+    exportHTML: function(path) {
         var frameContent = $('#showdown iframe').contents(),
             res = '<!DOCTYPE html>\n<html>\n',
             fileName = modPath.basename(path),
             fileNameDotIndex = fileName.lastIndexOf('.');
 
-        if( fileNameDotIndex == -1 || (fileNameDotIndex != -1 && !/^(html|htm)$/i.test(fileName.substr(fileNameDotIndex + 1)) )){
+        if ( fileNameDotIndex == -1 || (fileNameDotIndex != -1 && !/^(html|htm)$/i.test(fileName.substr(fileNameDotIndex + 1)) )) {
             path = path + '.html';
         }
 
@@ -174,12 +173,12 @@ var file = {
         markdown.writeToFile(path, cheer.html());
     },
     // 浏览器预览
-    preview: function(){
+    preview: function() {
         var frameContent = $('#showdown iframe').contents(),
             headCon = frameContent.find('head').html(),
             bodyCon = frameContent.find('body').html();
 
-        markdown.loadFile('./src/preview.html', function(data){
+        markdown.loadFile('./src/preview.html', function(data) {
             var j = cheerio.load(data),
                 locate = window.location.href;
 
@@ -187,26 +186,26 @@ var file = {
             j('head').find('title').text('Rock! MarkDown Editor preview');
             j('body').html(bodyCon);
 
-            fs.writeFile('./src/preview.html', j.html(), function(e){
-                if(e) return console.log(e);
+            fs.writeFile('./src/preview.html', j.html(), function(e) {
+                if (e) return console.log(e);
                 console.log('在浏览器中打开');
                 cache.gui.Shell.openExternal(locate.substr(0, locate.lastIndexOf('/')) + '/preview.html');
             });
         });
     }
-    /*loadZip: function(zipName, savePath, callback){
+    /*loadZip: function(zipName, savePath, callback) {
         var req = http.request({
-            hostname: 'github.com/superRaytin/Rock_Markdown',
+            hostname: 'github.com/superRaytin/rock-markdown-editor',
             path: '/project/rock/' + zipName + '.zip',
             method: 'GET'
-        }, function(res){
+        }, function(res) {
             console.log('开始下载...');
 
             var saveFile = fs.createWriteStream(savePath);
             res.pipe(saveFile);
 
             console.log(saveFile);
-            saveFile.on('close', function(){
+            saveFile.on('close', function() {
                 console.log(4444);
 
                 console.log('下载完成');
@@ -214,7 +213,7 @@ var file = {
             });
         });
 
-        req.on('error', function(e){
+        req.on('error', function(e) {
             console.log(e);
         });
 
