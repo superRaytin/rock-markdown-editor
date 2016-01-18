@@ -112,7 +112,7 @@ input[type='checkbox'] {
 }
 
 input[type='checkbox']:disabled {
-    opacity: .75;
+    opacity: .3;
 }
 
 input[type='checkbox']:not(:disabled):not(:active):hover {
@@ -256,6 +256,10 @@ label:hover > input[type=checkbox]:not(:disabled) ~ span,
 label:hover > input[type=radio]:not(:disabled) ~ span,
 input[type=checkbox]:not(:disabled) ~ label:hover {
     color: #222;
+}
+
+input[type=checkbox]:disabled ~ label {
+    color: #888;
 }
 
 /* select ============================================ */
