@@ -11,7 +11,7 @@
     border-right: 1px solid #ccc;
 }
 .hide{
-    display: none;
+    display: none !important;
 }
 .fn-ml10{
     margin-left: 10px !important;
@@ -311,6 +311,7 @@ body, button, input, select, textarea{
     text-overflow: ellipsis;
     display: inline-block;
     white-space: nowrap;
+    vertical-align: middle;
 }
 #overlay{
     position: absolute;
@@ -444,10 +445,13 @@ body, button, input, select, textarea{
 }
 
 /* settings */
+.d-content {
+    font-size: 12px;
+}
 .dialogWrap{
-    margin-top: -3px;
     width: 500px;
     min-height: 300px;
+    margin-top: -3px;
 }
 .tab_trigger{
     background: #f6f6f6;
@@ -538,6 +542,12 @@ body, button, input, select, textarea{
 .after_tips{
     display: inline-block;
     padding-left: 5px;
+    color: #999;
+    vertical-align: middle;
+}
+.line-tip {
+    display: inline-block;
+    padding-left: 60px;
     color: #999;
     vertical-align: middle;
 }
