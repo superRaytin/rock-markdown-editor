@@ -1,3 +1,10 @@
+### 0.2.1 (2016.01.18)
+- Mac
+  - `Fix` wrong tab modify status.
+  - `Fix` crash problem when right click on the preview area.
+  - `Fix` full screen does not taking effect.
+- Optimize user interface.
+
 ### 0.2.0 (2015.10.26)
 - Better support for mac.
 - Rearrange file directory structure.
@@ -5,9 +12,9 @@
 
 ### 0.1.3 (2014.01.13)
 - `Fix` prompt to save but actually not saved when exit.
-- Improve history email contacts.
+- Optimize history email contacts.
 - Add 'Manual-overload' as file was edit elsewhere.
-- Improve start-up speed.
+- Optimize start-up speed.
 
 ### 0.1.2
 - 拖拽导入文件的bug;

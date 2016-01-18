@@ -6,10 +6,10 @@ Cross-platform Markdown Editor.
 ## Features
 
 - WYSIWYG, Ctrl+F12 quick browser preview.
-- Powerful import and export.
-- Support drag and drop, support `.Markdown` `.md` `.txt` formats.
-- Support export to HTML file.
-- Support send email with converted HTML.
+- Completely import and export.
+- Import via Drag and Drop, with `.Markdown`, `.md` and `.txt` supported.
+- Export to HTML file.
+- Send email with converted HTML.
 - Support multi-tab and rich keyboard shortcuts.
 - Friendly state holding, Automatic remember editor status of the last time.
 - Completely history file records.
