@@ -2,7 +2,7 @@
 > Cross-platform Markdown Editor.
 
 <p style="text-align: center">
-    <img src="/docs/macshow.png" width="880" alt="Rock! Markdown Editor">
+    <img src="/docs/macshow.png" width="850" alt="Rock! Markdown Editor">
 </p>
 
 ![Rock Markdown Editor](/src/logo.png)
