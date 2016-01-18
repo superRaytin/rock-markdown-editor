@@ -1460,6 +1460,7 @@ $(function() {
             global.markdown = markdown;
 
             var gui = this.cache.gui || (this.cache.gui = NWGui);
+            var guiWin = this.cache.guiWin || (this.cache.guiWin = gui.Window.get());
 
             // Mac OS X || Linux
             if (!isWindows) {
