@@ -153,11 +153,11 @@
                         <legend>标签栏</legend>
                         <div class="fieldset_content">
                             <div class="tab_content_column">
-                                <input id="dblclickClose" type="checkbox" class="column_checkbox" data-name="tag_dblclickClose">
+                                <input id="dblclickClose" type="checkbox" class="column_checkbox" data-name="tag_dblclickClose" disabled>
                                 <label for="dblclickClose" class="column_label_check">双击关闭标签</label>
                             </div>
                             <div class="tab_content_column">
-                                <input id="lockTag" type="checkbox" class="column_checkbox" data-name="tag_lock">
+                                <input id="lockTag" type="checkbox" class="column_checkbox" data-name="tag_lock" disabled>
                                 <label for="lockTag" class="column_label_check">锁定(不允许拖放)</label>
                             </div>
                         </div>
@@ -179,7 +179,7 @@
             </div>
             <div class="tab_content_item hide">
                 <div class="tab_content_column">
-                    <input id="fileManager" type="checkbox" class="column_checkbox" data-name="fileManager">
+                    <input id="fileManager" type="checkbox" class="column_checkbox" data-name="fileManager" disabled>
                     <label for="fileManager" class="column_label_check">文件管理器</label>
                 </div>
             </div>
@@ -196,7 +196,7 @@
                             <div class="fieldset_column">
                                 <label for="smtp_port" class="column_title_input">端口</label>
                                 <input id="smtp_port" type="text" class="column_input" value="465" data-name="port" data-belong="mail">
-                                <span class="after_tips">通常是465</span>
+                                <span class="after_tips">通常是 465</span>
                             </div>
                             <div class="fieldset_column">
                                 <label for="smtp_userName" class="column_title_input">用户名</label>
@@ -212,14 +212,15 @@
                                 <input id="smtp_showName" type="text" class="column_input" data-name="showName" data-belong="mail" title="出现在邮件标题">
                                 <span class="after_tips">选填项</span>
                             </div>
+                            <div class="line-tip">以上信息只会保存在你的电脑本地</div>
                         </div>
                     </fieldset>
                 </div>
                 <div class="tab_content_column">
                     <input id="useSSL" type="checkbox" class="column_checkbox" data-name="SSL" data-belong="mail">
-                    <label for="useSSL" class="column_label_check">使用SSL</label>
+                    <label for="useSSL" class="column_label_check">使用 SSL</label>
                     <input id="mail_flag" type="checkbox" class="column_checkbox fn-ml10" data-name="flag" data-belong="mail">
-                    <label for="mail_flag" class="column_label_check">保留邮件底部Rock!标识（强烈建议保留）</label>
+                    <label for="mail_flag" class="column_label_check">保留邮件底部 Rock! 标识</label>
                 </div>
                 <div class="tab_content_column">
                     <input type="button" id="J-sendTestMail" class="column_button" value="测试账户设置">
